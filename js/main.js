@@ -41,7 +41,7 @@ function getData(map){
 			// But if the features were formatted as GeoJSON, you could use this syntax to grab properties
 			address = feature.feature.properties.ADDRESS;
 			type = feature.feature.properties.SCH_TYPE;
-			content = feature.feature.properties.SHORT_DESC;
+			content = name;
 			//content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Address: </strong>" + address + "<br>" + "<strong>School type: </strong>" + type;
 			feature.bindPopup(content);
 		}
