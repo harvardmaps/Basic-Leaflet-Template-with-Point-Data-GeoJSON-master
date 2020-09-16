@@ -16,7 +16,6 @@ function createMap(){
 	historicalDataMap.addControl( L.control.zoom({position: 'bottomright'}) )
 };
 
-
 //function to retrieve map data and place it on the map
 function getData(map){
 	//baselayer
@@ -44,7 +43,7 @@ function getData(map){
 			date = feature.feature.properties.Start_Year_for_Location;
 			content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Race: </strong>" + race + "<br>" + "<strong>Catetory: </strong>" + type + "<br>" + "<strong>Date: </strong>" + date;
 			//content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Address: </strong>" + address + "<br>" + "<strong>School type: </strong>" + type;
-			feature.bindPopup(content);
+			feature.bindPopup(content, {pane : 'sidebar'});
 		}
 
 		//add geojson layer to map w/ unique symbology
