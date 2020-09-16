@@ -36,7 +36,7 @@ function getData(map){
 
 		//function for popup
 		function buildPopupContent(datapoints,feature){
-			name = feature.feature.properties.Boston_End_Date;
+			name = "test";
 			// I have this stuff commented out because your data is ... XML? 
 			// But if the features were formatted as GeoJSON, you could use this syntax to grab properties
 			race = feature.feature.properties.Race;
