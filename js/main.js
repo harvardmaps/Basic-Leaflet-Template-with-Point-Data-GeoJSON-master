@@ -63,8 +63,7 @@ function getData(map){
 			action = feature.feature.properties.ACTION
 			race = feature.feature.properties.Race;
 			type = feature.feature.properties.Type;
-			date = feature.feature.properties.Start_Year_for_Location;
-			content = display_name + " " + action + " " + date;
+			content = display_name + " " + action + " here in " + date + " " + "<br>" + "<strong>Catetory: </strong>" + type + "<br>";
 			//content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Address: </strong>" + address + "<br>" + "<strong>School type: </strong>" + type;
 			feature.bindPopup(content);
 		}
