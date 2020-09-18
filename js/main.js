@@ -56,7 +56,7 @@ function getData(map){
 					if (feature.feature.properties.END_LOC == null){
 						date = "since " + feature.feature.properties.START_LOC + "." 
 					} else {
-						date = "from " + feature.feature.properties.START_LOC " to " + feature.feature.properties.END_LOC " ."
+						date = "from " + feature.feature.properties.START_LOC + " to " + feature.feature.properties.END_LOC + " ."
 					}
 				}
 			}
