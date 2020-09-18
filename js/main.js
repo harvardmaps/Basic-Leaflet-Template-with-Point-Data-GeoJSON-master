@@ -60,10 +60,19 @@ function getData(map){
 					}
 				}
 			}
+			if (feature.feature.properties.NOTES == null){
+				notes = ""
+			} else{
+				notes = "<br>Notes: " + feature.feature.properties.NOTES + "."
+			}
+			if (feature.feature.properties.SOURCE == null){
+				source = ""
+			} else {
+				source = "<br>Source: " + feature.feature.properties.SOURCE + "."
+			}
 			action = feature.feature.properties.ACTION
-			race = feature.feature.properties.Race;
 			type = feature.feature.properties.Type;
-			content = display_name + " " + action + " here in " + date + " " + "<br>" + "<strong>Catetory: </strong>" + type + "<br>";
+			content = display_name + " " + action + " here " + date + notes + source;
 			//content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Address: </strong>" + address + "<br>" + "<strong>School type: </strong>" + type;
 			feature.bindPopup(content);
 		}
