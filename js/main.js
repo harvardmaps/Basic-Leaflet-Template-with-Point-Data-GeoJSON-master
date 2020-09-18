@@ -47,11 +47,24 @@ function getData(map){
 					display_name = feature.feature.properties.NAME_2 + " " + feature.feature.properties.NAME_1
 				}
 			}
+			if (feature.feature.properties.START_LOC == null && feature.feature.properties.END_LOC == null){
+				date = "no date available."
+			} else {
+				if (feature.feature.properties.START_LOC == null){
+					date = "in " + feature.feature.properties.END_LOC + "." 
+				} else {
+					if (feature.feature.properties.END_LOC == null){
+						date = "since " + feature.feature.properties.START_LOC + "." 
+					} else {
+						date = "from " + feature.feature.properties.START_LOC " to " + feature.feature.properties.END_LOC " ."
+					}
+				}
+			}
 			action = feature.feature.properties.ACTION
 			race = feature.feature.properties.Race;
 			type = feature.feature.properties.Type;
 			date = feature.feature.properties.Start_Year_for_Location;
-			content = display_name + " " + " here in " + "<strong>Race: </strong>" + race + "<br>" + "<strong>Catetory: </strong>" + type + "<br>" + "<strong>Date: </strong>" + date;
+			content = display_name + " " + action + " " + date;
 			//content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Address: </strong>" + address + "<br>" + "<strong>School type: </strong>" + type;
 			feature.bindPopup(content);
 		}
