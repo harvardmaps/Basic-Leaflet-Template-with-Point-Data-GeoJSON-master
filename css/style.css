@@ -23,6 +23,7 @@ body {
 }
 
 #sidebar{
+  margin-left: 14px;
   font-family:"Trueno",sans-serif;
   position:absolute;
   width: 30%;
