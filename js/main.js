@@ -160,4 +160,4 @@ var overlays = {
 	"Sanborn, 1867" : Sanborn_1867
 };
 
-L.control.layers(null, overlays).addTo(map);
+L.control.layers(null, overlays).addTo(historicalDataMap);
