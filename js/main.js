@@ -141,13 +141,6 @@ function getData(map){
 $(document).ready(createMap);
 
 
-
-var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	minZoom: 0,
-	maxZoom: 21,
-	ext: 'png'
-}).addTo(map);
-
 var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
 	tms: true, 
 	attribution: 'Leventhal Map & Education Center'
@@ -163,11 +156,8 @@ var Beers_1874 = L.tileLayer(
 var histlayers = L.layerGroup(Beers_1874, Sanborn_1867);
 
 var overlays = {
-	"Historical Maps" : histlayers
+	"Beers, 1874" : Beers_1874,
+	"Sanborn, 1867" : Sanborn_1867
 };
 
-var basemaps = {
-	"Base Map" : basemap
-};
-
-L.control.layers(basemaps, overlays).addTo(map);
+L.control.layers(null, overlays).addTo(map);
