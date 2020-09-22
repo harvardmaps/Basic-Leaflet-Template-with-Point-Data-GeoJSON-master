@@ -26,8 +26,7 @@ function getData(map){
 		ext: 'png'
 }).addTo(map);
 
-	/*
-	  Failed attempt to define overlays and overlay group within the function
+	// Failed attempt to define overlays and overlay group within the function
 	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
 		tms: true, 
 		attribution: 'Leventhal Map & Education Center'
@@ -40,10 +39,12 @@ function getData(map){
 		}
 	);
 
-	var overlays = L.layerGroup(Beers_1874, Sanborn_1867);
+	var overlays = {
+	"Beers, 1874" : Beers_1874,
+	"Sanborn, 1867" : Sanborn_1867
+	};
 
-	L.control.layers(basemap, overlays).addTo(map);
-*/
+	L.control.layers(null, overlays).addTo(map);
 
 //part that gets the school data
  $.ajax("data/historical_data.geojson",{
@@ -141,7 +142,7 @@ function getData(map){
 
 $(document).ready(createMap);
 
-
+/*
 var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
 	tms: true, 
 	attribution: 'Leventhal Map & Education Center'
@@ -162,3 +163,4 @@ var overlays = {
 };
 
 L.control.layers(null, overlays).addTo(historicalDataMap);
+*/
