@@ -26,7 +26,7 @@ function getData(map){
 		ext: 'png'
 }).addTo(map);
 
-	// Failed attempt to define overlays and overlay group within the function
+	// attempt to define overlays and overlay group within the function
 	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
 		tms: true, 
 		attribution: 'Leventhal Map & Education Center'
@@ -141,26 +141,3 @@ function getData(map){
 
 
 $(document).ready(createMap);
-
-/*
-var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
-	tms: true, 
-	attribution: 'Leventhal Map & Education Center'
-});
-
-var Beers_1874 = L.tileLayer(
-	'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059015410/tiles/{z}/{x}/{-y}.png', {
-		tms: true, 
-		attribution: 'Leventhal Map & Education Center'
-	}
-);
-
-var histlayers = L.layerGroup(Beers_1874, Sanborn_1867);
-
-var overlays = {
-	"Beers, 1874" : Beers_1874,
-	"Sanborn, 1867" : Sanborn_1867
-};
-
-L.control.layers(null, overlays).addTo(historicalDataMap);
-*/
