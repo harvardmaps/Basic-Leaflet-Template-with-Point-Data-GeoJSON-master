@@ -36,8 +36,7 @@ function getData(map){
 		//function for popup
 		function buildPopupContent(datapoints,feature){
 			name = "test";
-			// I have this stuff commented out because your data is ... XML? 
-			// But if the features were formatted as GeoJSON, you could use this syntax to grab properties 
+			// Build the display name
 			if (feature.feature.properties.NAME_2 == null){
 				display_name = feature.feature.properties.NAME_1
 			} else {
@@ -47,6 +46,8 @@ function getData(map){
 					display_name = feature.feature.properties.NAME_2 + " " + feature.feature.properties.NAME_1
 				}
 			}
+
+			// Build the display date
 			if (feature.feature.properties.START_LOC == null && feature.feature.properties.END_LOC == null){
 				date = "no date available."
 			} else {
@@ -60,19 +61,43 @@ function getData(map){
 					}
 				}
 			}
+
+			// Build the display notes and source
 			if (feature.feature.properties.NOTES == null){
 				notes = ""
 			} else{
-				notes = "<br>Notes: " + feature.feature.properties.NOTES + "."
+				notes = "<br>Notes: " + feature.feature.properties.NOTES
 			}
 			if (feature.feature.properties.SOURCE == null){
 				source = ""
 			} else {
-				source = "<br>Source: " + feature.feature.properties.SOURCE + "."
+				source = "<br>Source: " + feature.feature.properties.SOURCE
 			}
+
+			// Build the display record links
+			if (feature.feature.properties.TITLE_1 == null){
+				r_link_1 = ""
+			} else {
+				r_link_1 = "<br>Records in HOLLIS include: <br>" + "<a href'" + feature.feature.properties.URL_1 + "'>" 
+				+ feature.feature.properties.TITLE_1 + "</a>"
+			}
+			if (feature.feature.properties.TITLE_2 == null){
+				r_link_2 = ""
+			} else {
+				r_link_2 = "<br>Records in HOLLIS include: <br>" + "<a href'" + feature.feature.properties.URL_2 + "'>" 
+				+ feature.feature.properties.TITLE_2 + "</a>"
+			}
+			if (feature.feature.properties.TITLE_3 == null){
+				r_link_3 = ""
+			} else {
+				r_link_3 = "<br>Records in HOLLIS include: <br>" + "<a href'" + feature.feature.properties.URL_3 + "'>" 
+				+ feature.feature.properties.TITLE_3 + "</a>"
+			}
+
 			action = feature.feature.properties.ACTION
 			type = feature.feature.properties.Type;
-			content = display_name + " " + action + " here " + date + notes + source;
+
+			content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + notes + source;
 			//content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Address: </strong>" + address + "<br>" + "<strong>School type: </strong>" + type;
 			feature.bindPopup(content);
 		}
