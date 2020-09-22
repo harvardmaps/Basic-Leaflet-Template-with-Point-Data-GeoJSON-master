@@ -153,6 +153,10 @@ var Beers_1874 = L.tileLayer(
 	}
 );
 
-var overlays = L.layerGroup(Beers_1874, Sanborn_1867);
+var histlayers = L.layerGroup(Beers_1874, Sanborn_1867);
+
+var overlays = {
+	"Historical Maps" : histlayers
+};
 
 L.control.layers(null, overlays).addTo(historicalDataMap);
