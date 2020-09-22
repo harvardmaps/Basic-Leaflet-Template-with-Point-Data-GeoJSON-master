@@ -7,7 +7,7 @@ function createMap(){
 		center: [42.350,-71.065],
 		zoom: 14,
 		minZoom: 4,
-		maxZoom: 17,
+		maxZoom: 19,
 		zoomControl:false
 	});
 
