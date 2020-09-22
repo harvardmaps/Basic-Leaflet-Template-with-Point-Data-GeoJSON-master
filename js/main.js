@@ -146,7 +146,7 @@ var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
 	minZoom: 0,
 	maxZoom: 21,
 	ext: 'png'
-}).addTo(historicalDataMap);
+}).addTo(map);
 
 var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
 	tms: true, 
@@ -170,4 +170,4 @@ var basemaps = {
 	"Base Map" : basemap
 };
 
-L.control.layers(basemaps, overlays).addTo(historicalDataMap);
+L.control.layers(basemaps, overlays).addTo(map);
