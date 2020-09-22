@@ -78,19 +78,19 @@ function getData(map){
 			if (feature.feature.properties.TITLE_1 == null){
 				r_link_1 = ""
 			} else {
-				r_link_1 = "<br>Records in HOLLIS include: <br>" + "<a href'" + feature.feature.properties.URL_1 + "'>" 
+				r_link_1 = "<br>Records in HOLLIS include: <br>" + "<a href='" + feature.feature.properties.URL_1 + "'>" 
 				+ feature.feature.properties.TITLE_1 + "</a>"
 			}
 			if (feature.feature.properties.TITLE_2 == null){
 				r_link_2 = ""
 			} else {
-				r_link_2 = "<br>Records in HOLLIS include: <br>" + "<a href'" + feature.feature.properties.URL_2 + "'>" 
+				r_link_2 = "<br><a href='" + feature.feature.properties.URL_2 + "'>" 
 				+ feature.feature.properties.TITLE_2 + "</a>"
 			}
 			if (feature.feature.properties.TITLE_3 == null){
 				r_link_3 = ""
 			} else {
-				r_link_3 = "<br>Records in HOLLIS include: <br>" + "<a href'" + feature.feature.properties.URL_3 + "'>" 
+				r_link_3 = "<br><a href='" + feature.feature.properties.URL_3 + "'>" 
 				+ feature.feature.properties.TITLE_3 + "</a>"
 			}
 
