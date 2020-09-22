@@ -26,11 +26,11 @@ function getData(map){
 		ext: 'png'
 }).addTo(map);
 
-	/*  Define overlays and overlay group
+	//  Failed attempt to define overlays and overlay group within the function
 	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
 		tms: true, 
 		attribution: 'Leventhal Map & Education Center'
-	})
+	});
 
 	var Beers_1874 = L.tileLayer(
 		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059015410/tiles/{z}/{x}/{-y}.png', {
@@ -41,8 +41,8 @@ function getData(map){
 
 	var overlays = L.layerGroup(Beers_1874, Sanborn_1867);
 
-L.control.layers(basemap, overlays).addTo(map);
-*/
+	L.control.layers(basemap, overlays).addTo(map);
+
 
 //part that gets the school data
  $.ajax("data/historical_data.geojson",{
@@ -137,4 +137,29 @@ L.control.layers(basemap, overlays).addTo(map);
 //bracket that closes out the getData() function. Don't erase!
 };
 
+
 $(document).ready(createMap);
+
+/*
+var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		minZoom: 0,
+		maxZoom: 21,
+		ext: 'png'
+});
+
+var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
+	tms: true, 
+	attribution: 'Leventhal Map & Education Center'
+});
+
+var Beers_1874 = L.tileLayer(
+	'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059015410/tiles/{z}/{x}/{-y}.png', {
+		tms: true, 
+		attribution: 'Leventhal Map & Education Center'
+	}
+);
+
+var overlays = L.layerGroup(Beers_1874, Sanborn_1867);
+
+L.control.layers(basemap, overlays).addTo(historicalDataMap);
+*/
