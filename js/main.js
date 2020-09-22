@@ -6,8 +6,8 @@ function createMap(){
 	 historicalDataMap = L.map('map',{
 		center: [42.350,-71.065],
 		zoom: 14,
-		minZoom:4,
-		maxZoom: 21,
+		minZoom: 4,
+		maxZoom: 17,
 		zoomControl:false
 	});
 
