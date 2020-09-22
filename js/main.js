@@ -19,13 +19,14 @@ function createMap(){
 
 //function to retrieve map data and place it on the map
 function getData(map){
-	/*baselayer
+	//baselayer
 	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		minZoom: 0,
 		maxZoom: 21,
 		ext: 'png'
 }).addTo(map);
 
+	/*
 	  Failed attempt to define overlays and overlay group within the function
 	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
 		tms: true, 
