@@ -24,7 +24,24 @@ function getData(map){
 		minZoom: 0,
 		maxZoom: 21,
 		ext: 'png'
-}).addTo(historicalDataMap);
+})
+
+	// Define overlays and overlay group
+	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
+		tms: true, 
+		attribution: 'Leventhal Map & Education Center'
+	})
+
+	var Beers_1874 = L.tileLayer(
+		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059015410/tiles/{z}/{x}/{-y}.png', {
+			tms: true, 
+			attribution: 'Leventhal Map & Education Center'
+		}
+	);
+
+	var overlays = L.layerGroup(Beers_1874, Sanborn_1867);
+
+	L.control.layers(basemap, overlays).addTo(map);
 
 
 //part that gets the school data
