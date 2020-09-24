@@ -1,6 +1,15 @@
 // declare map in global scope
 var historicalDataMap;
 
+function removeFeatures() {
+	$( "#sidebar-content" ).html("<h2>Introduction to the site</h2> <p>Some ideas here</p>");
+};
+
+$( "#reset-button" ).click(function() {
+	removeFeatures();
+});
+
+
 //instantiate map 
 function createMap(){
 	 historicalDataMap = L.map('map',{
