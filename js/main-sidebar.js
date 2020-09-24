@@ -1,14 +1,6 @@
 // declare map in global scope
 var historicalDataMap;
 
-function removeFeatures() {
-	$( "#sidebar-content" ).html("<h2>Introduction to the site</h2> <p>Some ideas here</p>");
-};
-
-$( "#reset-button" ).click(function() {
-	removeFeatures();
-});
-
 //instantiate map 
 function createMap(){
 	 historicalDataMap = L.map('map',{
@@ -61,11 +53,8 @@ function getData(map){
 		 var datapoints = response.features;
 
 		//function for popup
-		function OnEach(feature, layer) { 
-            layer.on('click', function (datapoints,e) {
-
-            feature = e.target
-
+		function buildPopupContent(datapoints,feature){
+			name = "test";
 			// Build the display name
 			if (feature.feature.properties.NAME_2 == null){
 				display_name = feature.feature.properties.NAME_1
@@ -129,15 +118,12 @@ function getData(map){
 
 			content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + notes + source;
 			//content = "<strong>Name: </strong>" + name + "<br>" + "<strong>Address: </strong>" + address + "<br>" + "<strong>School type: </strong>" + type;
-            //feature.bindPopup(content);
-            $( "#sidebar-content" ).html(content);
-        }); 
-        } // popup ends here
-        
+			feature.bindPopup(content);
+		}
 
 		//add geojson layer to map w/ unique symbology
 		var schoolLayer = L.geoJSON(datapoints, {
-			onEachFeature: onEach
+			onEachFeature: buildPopupContent
 		}).addTo(map);
 
 
