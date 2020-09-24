@@ -30,18 +30,23 @@
 	
 	<!-- container for the map, with custom id name "#map" --> 
 	<div id = "sidebar">
-		<h2>Sidebar for popup content.</h2>
-		<p>One idea is to populate the data from the popups over here</p>
-		<li>Data data data</li>
-		<li>Data data data</li>
-		<li>Data data data</li>
-	</div>
-	<div id="map"></div>
-	<!-- container for the top banner, with custom id name "#banner" --> 
-	<div id="banner"></div>
+		<div id="controls">   
+		   <button id="reset-button">Reset</button>
+		</div>
+		<div id = "sidebar-content">   
+		   <h2>Sidebar for popup content</h2>
+			 <p>One idea is to populate the data from the popups over here</p>
+			 <li>Data data data</li>
+			 <li>Data data data</li>
+		   <li>Data data data</li>
+		</div>
+	  </div>
+	 <div id="mymap"></div>
+	  <!-- container for the top banner, with custom id name "#banner" --> 
+	  <div id="banner"></div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
-	<script type= "text/javascript" src = "js/main.js"> </script>
+	<script type= "text/javascript" src = "js/main-sidebar.js"> </script>
 
 </body>
 </html>
