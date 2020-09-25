@@ -89,14 +89,10 @@ var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
 	ext: 'png'
 }).addTo(historicalDataMap);
 
-/*var bostonData = L.geoJson(historicalData.responseJSON, {
+var bostonData = L.geoJson(historicalData.responseJSON, {
 	onEachFeature: onEach
 }).addTo(historicalDataMap);
-*/
 
-var bostonData = L.geoJson(geodata, {
-	onEachFeature: onEach
-}).addTo(historicalDataMap);
 
 /*
 	//call getdata function
