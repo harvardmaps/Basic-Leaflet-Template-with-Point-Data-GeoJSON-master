@@ -14,8 +14,8 @@ var historicalData = $.ajax({
 	error: function(xhr) {
 		alert(xhr.statusText)
 	}
-    });
-/*
+	});
+	
 function whenClicked(e) {
     // e = event
     var feature = e.target;
@@ -32,9 +32,7 @@ function onEach(feature, layer) {
 
 L.geoJson(historicalData.responseJSON, {
         onEachFeature: onEach
-    }).addTo(map);
-*/
-var bostonData = L.geoJson(historicalData.responseJSON).addTo(historicalDataMap);
+	}).addTo(historicalDataMap);
 
 var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	minZoom: 0,
