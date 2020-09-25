@@ -15,7 +15,7 @@ var historicalData = $.ajax({
 		alert(xhr.statusText)
 	}
     });
-
+/*
 function whenClicked(e) {
     // e = event
     var feature = e.target;
@@ -29,10 +29,12 @@ function onEach(feature, layer) {
         click: whenClicked
         });
     };
-      
+
 L.geoJson(historicalData.responseJSON, {
         onEachFeature: onEach
     }).addTo(map);
+*/
+L.geoJson(historicalData.responseJSON).addTo(map);
 
 /*
 	//call getdata function
