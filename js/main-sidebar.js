@@ -1,12 +1,3 @@
-// declare map in global scope
-var historicalDataMap = L.map('map',{
-		center: [42.350,-71.065],
-		zoom: 14,
-		minZoom: 4,
-		maxZoom: 18,
-        zoomControl:false 
-});
-
 var geodata =  {
 	"type": "FeatureCollection",
 	"features": [{
@@ -68,7 +59,16 @@ var historicalData = $.ajax({
 		alert(xhr.statusText)
 	}
 	});
-	
+
+	// declare map in global scope
+var historicalDataMap = L.map('map',{
+	center: [42.350,-71.065],
+	zoom: 14,
+	minZoom: 4,
+	maxZoom: 18,
+	zoomControl:false 
+});
+
 function whenClicked(e) {
     // e = event
     var feature = e.target;
