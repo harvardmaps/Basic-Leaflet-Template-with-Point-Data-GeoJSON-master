@@ -83,14 +83,14 @@ function onEach(feature, layer) {
         });
     };
 
-L.geoJson(geodata, {
-        onEachFeature: onEach
-	}).addTo(historicalDataMap);
-
 var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	minZoom: 0,
 	maxZoom: 21,
 	ext: 'png'
+}).addTo(historicalDataMap);
+
+L.geoJson(geodata, {
+	onEachFeature: onEach
 }).addTo(historicalDataMap);
 
 
