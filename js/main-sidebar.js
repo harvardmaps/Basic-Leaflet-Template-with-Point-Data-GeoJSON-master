@@ -89,7 +89,7 @@ var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
 	ext: 'png'
 }).addTo(historicalDataMap);
 
-L.geoJson(geodata, {
+L.geoJson(historicalData, {
 	onEachFeature: onEach
 }).addTo(historicalDataMap);
 
