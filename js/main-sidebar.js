@@ -1,5 +1,5 @@
 // declare map in global scope
-var map = L.map('map',{
+var historicalDataMap = L.map('map',{
 		center: [42.350,-71.065],
 		zoom: 14,
 		minZoom: 4,
@@ -34,13 +34,13 @@ L.geoJson(historicalData.responseJSON, {
         onEachFeature: onEach
     }).addTo(map);
 */
-L.geoJson(historicalData.responseJSON).addTo(map);
+var bostonData = L.geoJson(historicalData.responseJSON).addTo(historicalDataMap);
 
 var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	minZoom: 0,
 	maxZoom: 21,
 	ext: 'png'
-}).addTo(map);
+}).addTo(historicalDataMap);
 
 /*
 	//call getdata function
