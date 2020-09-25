@@ -1,12 +1,74 @@
 // declare map in global scope
 var historicalDataMap;
 
+
+
 function whenClicked(e) {
     // e = event
     var feature = e.target;
-    $( "#sidebar-content" ).html("<h2>Updated sidebar with content</h2><br><strong>Name: " 
-    + feature.feature.properties.NAME_2 + " " + feature.feature.properties.NAME_1 
-    + "</strong><br><strong>Address: " + feature.feature.properties.ORIG_ADDRESS + "</strong>");
+    // Build the display name
+	if (feature.feature.properties.NAME_2 == null){
+		display_name = feature.feature.properties.NAME_1
+	} else {
+		if (feature.feature.properties.NAME_1 == null){
+			display_name = feature.feature.properties.NAME_2
+		} else {
+			display_name = feature.feature.properties.NAME_2 + " " + feature.feature.properties.NAME_1
+			}
+        }
+    
+    // Build the display date
+	if (feature.feature.properties.START_LOC == null && feature.feature.properties.END_LOC == null){
+		date = "no date available."
+	} else {
+		if (feature.feature.properties.START_LOC == null){
+			date = "in " + feature.feature.properties.END_LOC + "." 
+		} else {
+			if (feature.feature.properties.END_LOC == null){
+				date = "since " + feature.feature.properties.START_LOC + "." 
+			} else {
+				date = "from " + feature.feature.properties.START_LOC + " to " + feature.feature.properties.END_LOC + " ."
+			}
+		}
+    }
+    
+    // Build the display notes and source
+    if (feature.feature.properties.NOTES == null){
+        notes = ""
+    } else{
+        notes = "<br>Notes: " + feature.feature.properties.NOTES
+    }
+    if (feature.feature.properties.SOURCE == null){
+        source = ""
+    } else {
+        source = "<br>Source: " + feature.feature.properties.SOURCE
+    }
+
+    // Build the display record links
+	if (feature.feature.properties.TITLE_1 == ""){
+		r_link_1 = ""
+	} else {
+		r_link_1 = "<br>Records in HOLLIS include: <br>" + "<a href='" + feature.feature.properties.URL_1 + "'>" 
+		+ feature.feature.properties.TITLE_1 + "</a>"
+	}
+	if (feature.feature.properties.TITLE_2 == ""){
+		r_link_2 = ""
+	} else {
+		r_link_2 = "<br><a href='" + feature.feature.properties.URL_2 + "'>" 
+		+ feature.feature.properties.TITLE_2 + "</a>"
+	}
+	if (feature.feature.properties.TITLE_3 == ""){
+		r_link_3 = ""
+	} else {
+		r_link_3 = "<br><a href='" + feature.feature.properties.URL_3 + "'>" 
+		+ feature.feature.properties.TITLE_3 + "</a>"
+	}
+    
+    action = feature.feature.properties.ACTION
+    type = feature.feature.properties.Type;
+
+    content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + notes + source;
+    $( "#sidebar-content" ).html(content);
     };
    
 function dataLayer(data, map) {
