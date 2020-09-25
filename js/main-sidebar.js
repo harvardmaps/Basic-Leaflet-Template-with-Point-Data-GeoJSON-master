@@ -7,6 +7,14 @@ var historicalDataMap = L.map('map',{
         zoomControl:false 
 });
 
+function removeFeatures() {
+	$( "#sidebar-content" ).html("<h2>Introduction to the site</h2> <p>Some ideas here</p>");
+};
+
+$( "#reset-button" ).click(function() {
+	removeFeatures();
+});
+
 var historicalData = $.ajax({
     url: "data/historical_data.geojson",
     dataType: "json",
