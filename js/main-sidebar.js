@@ -1,5 +1,5 @@
 // declare map in global scope
-var historicalDataMap = L.map('map',{
+var map = L.map('map',{
 		center: [42.350,-71.065],
 		zoom: 14,
 		minZoom: 4,
