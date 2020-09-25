@@ -7,6 +7,51 @@ var historicalDataMap = L.map('map',{
         zoomControl:false 
 });
 
+var geodata =  {
+	"type": "FeatureCollection",
+	"features": [{
+	  "type": "Feature",
+	  "properties": {
+		"NAME_1": "Hayden",
+		"NAME_2": "Harriet",
+		"DESC_OCC": null,
+		"RACE": "Black",
+		"TYPE": "Person",
+		"ACTION": "lived",
+		"START_LOC": 1850.0,
+		"END_LOC": 1889.0,
+		"LAT": 42.360223,
+		"LONG": -71.069049,
+		"ORIG_ADDRESS": "66 Southac St",
+	  },
+	  "geometry": {
+		"type": "Point",
+		"coordinates": [-71.069049, 42.360223]
+	  }
+	},
+	{
+	  "type": "Feature",
+	  "properties": {
+		"NAME_1": "Henry",
+		"NAME_2": "John",
+		"DESC_OCC": "mariner",
+		"RACE": "Black",
+		"TYPE": "Person",
+		"ACTION": "lived",
+		"START_LOC": 1837.0,
+		"END_LOC": 1865.0,
+		"LAT": 42.36049,
+		"LONG": -71.06505,
+		"ORIG_ADDRESS": "Not Given",
+	  },
+	  "geometry": {
+		"type": "Point",
+		"coordinates": [-71.06505, 42.36049]
+	  }
+	 }
+	]
+};
+
 function removeFeatures() {
 	$( "#sidebar-content" ).html("<h2>Introduction to the site</h2> <p>Some ideas here</p>");
 };
@@ -38,7 +83,7 @@ function onEach(feature, layer) {
         });
     };
 
-L.geoJson(historicalData.responseJSON, {
+L.geoJson(geodata, {
         onEachFeature: onEach
 	}).addTo(historicalDataMap);
 
@@ -47,6 +92,7 @@ var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
 	maxZoom: 21,
 	ext: 'png'
 }).addTo(historicalDataMap);
+
 
 /*
 	//call getdata function
