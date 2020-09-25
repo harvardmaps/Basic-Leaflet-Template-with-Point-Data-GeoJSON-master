@@ -63,7 +63,6 @@ function getData(map){
 
 		//function for popup
 		function buildPopupContent(datapoints,feature){
-			name = "test";
 			// Build the display name
 			if (feature.feature.properties.NAME_2 == null){
 				display_name = feature.feature.properties.NAME_1

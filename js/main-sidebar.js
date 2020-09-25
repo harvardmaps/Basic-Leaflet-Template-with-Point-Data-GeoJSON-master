@@ -1,21 +1,42 @@
 // declare map in global scope
-var historicalDataMap;
-
-//instantiate map 
-function createMap(){
-	 historicalDataMap = L.map('map',{
+var historicalDataMap = L.map('map',{
 		center: [42.350,-71.065],
 		zoom: 14,
 		minZoom: 4,
 		maxZoom: 18,
-		zoomControl:false
-	});
+        zoomControl:false 
+});
 
-	
+var historicalData = $.ajax({
+    url: "data/historical_data.geojson",
+    dataType: "json",
+	success: console.log("Data load successful"),
+	error: function(xhr) {
+		alert(xhr.statusText)
+	}
+    });
+
+function whenClicked(e) {
+    // e = event
+    var feature = e.target;
+    $( "#sidebar-content" ).html("<h2>Updated sidebar with content</h2><br><strong>Name: " 
+    + feature.feature.properties.NAME_2 + " " + feature.feature.properties.NAME_1 
+    + "</strong><br><strong>Address: " + feature.feature.properties.ORIG_ADDRESS + "</strong>");
+    };
+      
+function onEach(feature, layer) {
+    layer.on({
+        click: whenClicked
+        });
+    };
+      
+L.geoJson(historicalData.responseJSON, {
+        onEachFeature: onEach
+    }).addTo(map);
+
+/*
 	//call getdata function
-	getData(historicalDataMap);
-	historicalDataMap.addControl( L.control.zoom({position: 'bottomright'}) )
-};
+	.addControl( L.control.zoom({position: 'bottomright'}) )
 
 //function to retrieve map data and place it on the map
 function getData(map){
@@ -141,3 +162,4 @@ function getData(map){
 
 
 $(document).ready(createMap);
+*/
