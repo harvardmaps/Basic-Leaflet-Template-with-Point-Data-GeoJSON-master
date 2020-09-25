@@ -36,6 +36,12 @@ L.geoJson(historicalData.responseJSON, {
 */
 L.geoJson(historicalData.responseJSON).addTo(map);
 
+var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	minZoom: 0,
+	maxZoom: 21,
+	ext: 'png'
+}).addTo(map);
+
 /*
 	//call getdata function
 	.addControl( L.control.zoom({position: 'bottomright'}) )
