@@ -2,7 +2,7 @@
 var historicalDataMap;
 
 
-
+//create sidebar content
 function whenClicked(e) {
     // e = event
     var feature = e.target;
@@ -27,7 +27,7 @@ function whenClicked(e) {
 			if (feature.feature.properties.END_LOC == null){
 				date = "since " + feature.feature.properties.START_LOC + "." 
 			} else {
-				date = "from " + feature.feature.properties.START_LOC + " to " + feature.feature.properties.END_LOC + " ."
+				date = "from " + feature.feature.properties.START_LOC + " to " + feature.feature.properties.END_LOC + "."
 			}
 		}
     }
@@ -36,41 +36,42 @@ function whenClicked(e) {
     if (feature.feature.properties.NOTES == null){
         notes = ""
     } else{
-        notes = "<br>Notes: " + feature.feature.properties.NOTES
+        notes = "<br><strong>Notes:</strong> " + feature.feature.properties.NOTES
     }
     if (feature.feature.properties.SOURCE == null){
         source = ""
     } else {
-        source = "<br>Source: " + feature.feature.properties.SOURCE
+        source = "<br><strong>Source:</strong> " + feature.feature.properties.SOURCE
     }
 
     // Build the display record links
 	if (feature.feature.properties.TITLE_1 == ""){
 		r_link_1 = ""
 	} else {
-		r_link_1 = "<br>Records in HOLLIS include: <br>" + "<a href='" + feature.feature.properties.URL_1 + "'>" 
-		+ feature.feature.properties.TITLE_1 + "</a>"
+		r_link_1 = "<p>Records in HOLLIS include: <p>" + "<li><a href='" + feature.feature.properties.URL_1 + "'>" 
+		+ feature.feature.properties.TITLE_1 + "</a></li>"
 	}
 	if (feature.feature.properties.TITLE_2 == ""){
 		r_link_2 = ""
 	} else {
-		r_link_2 = "<br><a href='" + feature.feature.properties.URL_2 + "'>" 
-		+ feature.feature.properties.TITLE_2 + "</a>"
+		r_link_2 = "<li><a href='" + feature.feature.properties.URL_2 + "'>" 
+		+ feature.feature.properties.TITLE_2 + "</a></li>"
 	}
 	if (feature.feature.properties.TITLE_3 == ""){
 		r_link_3 = ""
 	} else {
-		r_link_3 = "<br><a href='" + feature.feature.properties.URL_3 + "'>" 
-		+ feature.feature.properties.TITLE_3 + "</a>"
+		r_link_3 = "<li><a href='" + feature.feature.properties.URL_3 + "'>" 
+		+ feature.feature.properties.TITLE_3 + "</a></li>"
 	}
     
     action = feature.feature.properties.ACTION
     type = feature.feature.properties.Type;
 
     content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + notes + source;
-    $( "#sidebar-content" ).html(content);
+    $( "#sidebar-content" ).html("<h2>Information on this location</h2>" + content);
     };
-   
+
+//function to add the data to the map with the display content
 function dataLayer(data, map) {
     var dataLayer = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
