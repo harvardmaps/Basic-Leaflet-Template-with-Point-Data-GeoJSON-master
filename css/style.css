@@ -21,11 +21,12 @@ body {
 }
 
 #header{
+  height: 50px;
   background-color: #f8c21c;
 }
 
 #sidebar{
-  position:absolute;
+  float:left;
   width: 30%;
   height:70%;
   background-color: #FFFAFA;
