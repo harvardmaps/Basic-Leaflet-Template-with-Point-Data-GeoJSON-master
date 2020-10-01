@@ -10,7 +10,7 @@ html, body{
 #map{
 	height:100%;
 	width:100%;
-	bottom:0;
+	/*bottom:0;*/
 }
 
 /* browser adds margin by default, and that adds a scrollbar ... no good */
