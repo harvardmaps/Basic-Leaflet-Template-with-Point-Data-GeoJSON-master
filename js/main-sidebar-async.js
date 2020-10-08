@@ -129,7 +129,7 @@ function getData(map){
     }).addTo(map);
 
 	// attempt to define overlays and overlay group within the function
-	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
+	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{y}.png', {
 		attribution: 'Leventhal Map & Education Center'
 	});
 
@@ -142,7 +142,6 @@ function getData(map){
 
     var Hopkins_1874 = L.tileLayer(
 		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{-y}.png', {
-			tms: true, 
 			attribution: 'Leventhal Map & Education Center'
 		}
     );
