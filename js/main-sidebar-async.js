@@ -141,7 +141,7 @@ function getData(map){
 	);
 
     var Hopkins_1874 = L.tileLayer(
-		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{-y}.png', {
+		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{y}.png', {
 			attribution: 'Leventhal Map & Education Center'
 		}
     );
