@@ -73,13 +73,23 @@ function whenClicked(e) {
 
 //function to add the data to the map with the display content
 function dataLayer(data, map) {
+    var geojsonMarkerOptions = {
+        radius : 8,
+        fillColor : "#0000ff",
+        color : "000",
+        weight : 1, 
+        opacity : 1,
+        fillOpacity : .8
+    };
     var dataLayer = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
                 click: whenClicked
             })
-
-        }
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
+		}
     });
     dataLayer.addTo(map)
 }
@@ -92,7 +102,6 @@ $( "#reset-button" ).click(function() {
 	removeFeatures();
 });
 
-
 //instantiate map 
 function createMap(){
 	 historicalDataMap = L.map('map',{
@@ -103,7 +112,6 @@ function createMap(){
 		zoomControl:false
 	});
 
-	
 	//call getdata function
 	getData(historicalDataMap);
 	historicalDataMap.addControl( L.control.zoom({position: 'bottomright'}) )
@@ -112,11 +120,13 @@ function createMap(){
 //function to retrieve map data and place it on the map
 function getData(map){
 	//baselayer
-	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		minZoom: 0,
-		maxZoom: 21,
-		ext: 'png'
-}).addTo(map);
+    var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        subdomains: 'abcd',
+        minZoom: 0,
+        maxZoom: 21,
+        ext: 'png'
+    }).addTo(map);
 
 	// attempt to define overlays and overlay group within the function
 	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
@@ -131,9 +141,17 @@ function getData(map){
 		}
 	);
 
+    var Hopkins_1874 = L.tileLayer(
+		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{-y}.png', {
+			tms: true, 
+			attribution: 'Leventhal Map & Education Center'
+		}
+    );
+    
 	var overlays = {
-	"Beers, 1874" : Beers_1874,
-	"Sanborn, 1867" : Sanborn_1867
+    "Hopkins, 1874" : Hopkins_1874,
+	"F. W. Beers & Co., 1874" : Beers_1874,
+    "Sanborn, 1867" : Sanborn_1867
 	};
 
 	L.control.layers(null, overlays).addTo(map);
