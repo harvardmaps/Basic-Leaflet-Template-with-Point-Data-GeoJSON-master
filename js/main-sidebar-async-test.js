@@ -113,12 +113,12 @@ function dataLayer(data, map) {
             layer.on({
                 click: whenClicked
             })
-		},
-		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
 		}
 	}).addTo(map);
 
+	var markers = L.markerClusterGroup();
+	markers.addLayer(layerAll);
+	
     var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
