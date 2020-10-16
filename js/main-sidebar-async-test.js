@@ -107,7 +107,7 @@ function dataLayer(data, map) {
         fillOpacity : .8
 	};
 	
-	//attempt at filter options in control
+	//add filter options in control
 	var layerAll = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -129,7 +129,7 @@ function dataLayer(data, map) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
 		},
 		filter: function(feature) {
-			return feature.properties.END_LOC < 1830
+			return feature.properties.END_LOC <= 1830
 		}
 	});
 
@@ -143,7 +143,7 @@ function dataLayer(data, map) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
 		},
 		filter: function(feature) {
-			return feature.properties.END_LOC < 1840 && feature.properties.END_LOC > 1830
+			return feature.properties.END_LOC <= 1840 && feature.properties.END_LOC > 1830
 		}
 	});
 
@@ -157,7 +157,7 @@ function dataLayer(data, map) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
 		},
 		filter: function(feature) {
-			return feature.properties.END_LOC < 1850 && feature.properties.END_LOC > 1840
+			return feature.properties.END_LOC <= 1850 && feature.properties.END_LOC > 1840
 		}
 	});
 
@@ -171,7 +171,7 @@ function dataLayer(data, map) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
 		},
 		filter: function(feature) {
-			return feature.properties.END_LOC < 1860 && feature.properties.END_LOC > 1850
+			return feature.properties.END_LOC <= 1860 && feature.properties.END_LOC > 1850
 		}
 	});
 
@@ -185,7 +185,7 @@ function dataLayer(data, map) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
 		},
 		filter: function(feature) {
-			return feature.properties.END_LOC < 1870 && feature.properties.END_LOC > 1860
+			return feature.properties.END_LOC <= 1870 && feature.properties.END_LOC > 1860
 		}
 	});
 	
