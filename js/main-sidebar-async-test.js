@@ -117,7 +117,7 @@ function dataLayer(data, map) {
 		pointToLayer : function (feature, latlng) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
 		}
-	});
+	}).addTo(map);
 
     var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
