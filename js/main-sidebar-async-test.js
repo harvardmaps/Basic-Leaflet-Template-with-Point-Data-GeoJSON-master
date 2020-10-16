@@ -73,15 +73,44 @@ function whenClicked(e) {
 
 //function to add the data to the map with the display content
 function dataLayer(data, map) {
-    var geojsonMarkerOptions = {
+	
+	// attempt to define overlays and overlay group within the function
+	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
+		tms: true, 
+		attribution: 'Leventhal Map & Education Center'
+	});
+	
+	var Beers_1874 = L.tileLayer(
+		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059015410/tiles/{z}/{x}/{-y}.png', {
+			tms: true, 
+			attribution: 'Leventhal Map & Education Center'
+		}
+	);
+	
+	var Hopkins_1874 = L.tileLayer(
+		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{-y}.png', {
+			tms: true, 
+			attribution: 'Leventhal Map & Education Center'
+		}
+	);
+		
+	var overlays = {
+	"Hopkins, 1874" : Hopkins_1874,
+	"F. W. Beers & Co., 1874" : Beers_1874,
+	"Sanborn, 1867" : Sanborn_1867
+	};
+	
+	var geojsonMarkerOptions = {
         radius : 8,
         fillColor : "#0000ff",
         color : "000",
         weight : 1, 
         opacity : 1,
         fillOpacity : .8
-    };
-    var dataLayer = L.geoJson(data, {
+	};
+	
+	//attempt at filter options in control
+    var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
                 click: whenClicked
@@ -89,9 +118,77 @@ function dataLayer(data, map) {
 		},
 		pointToLayer : function (feature, latlng) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
+		},
+		filter: function(feature) {
+			return feature.properties.END_LOC < 1830
 		}
-    });
-    dataLayer.addTo(map)
+	});
+
+	var layer1840 = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: whenClicked
+            })
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
+		},
+		filter: function(feature) {
+			return feature.properties.END_LOC < 1840 && feature.properties.END_LOC > 1830
+		}
+	});
+
+	var layer1850 = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: whenClicked
+            })
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
+		},
+		filter: function(feature) {
+			return feature.properties.END_LOC < 1850 && feature.properties.END_LOC > 1840
+		}
+	});
+
+	var layer1860 = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: whenClicked
+            })
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
+		},
+		filter: function(feature) {
+			return feature.properties.END_LOC < 1860 && feature.properties.END_LOC > 1850
+		}
+	});
+
+	var layer1870 = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: whenClicked
+            })
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
+		},
+		filter: function(feature) {
+			return feature.properties.END_LOC < 1870 && feature.properties.END_LOC > 1860
+		}
+	});
+	
+	var dataLayers = {
+		"Pre 1830": layer1830,
+		"1831-1840": layer1840,
+		"1841-1850": layer1850,
+		"1851-1860": layer1860,
+		"1861-1870": layer1870
+	};
+
+	L.control.layers(dataLayers, overlays).addTo(map);
 }
 
 function removeFeatures() {
@@ -128,41 +225,15 @@ function getData(map){
         ext: 'png'
     }).addTo(map);
 
-	// attempt to define overlays and overlay group within the function
-	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
-		tms: true, 
-		attribution: 'Leventhal Map & Education Center'
-	});
 
-	var Beers_1874 = L.tileLayer(
-		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059015410/tiles/{z}/{x}/{-y}.png', {
-			tms: true, 
-			attribution: 'Leventhal Map & Education Center'
-		}
-	);
 
-    var Hopkins_1874 = L.tileLayer(
-		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{-y}.png', {
-			tms: true, 
-			attribution: 'Leventhal Map & Education Center'
-		}
-    );
-    
-	var overlays = {
-    "Hopkins, 1874" : Hopkins_1874,
-	"F. W. Beers & Co., 1874" : Beers_1874,
-    "Sanborn, 1867" : Sanborn_1867
-	};
-
-	L.control.layers(null, overlays).addTo(map);
-
-//part that gets the school data
+//part that gets the data
  $.ajax("data/historical_data.geojson",{
 	dataType: "json",
 	 success: function(response){
 		 var datapoints = response.features;
 
-		//function for popup
+		//function for sidebar content
 		dataLayer(datapoints, map)
 
 
