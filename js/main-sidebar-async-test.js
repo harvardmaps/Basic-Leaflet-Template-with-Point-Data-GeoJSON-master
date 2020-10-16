@@ -110,6 +110,17 @@ function dataLayer(data, map) {
 	};
 	
 	//attempt at filter options in control
+	var layer1830 = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            layer.on({
+                click: whenClicked
+            })
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
+		}
+	});
+
     var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -181,7 +192,8 @@ function dataLayer(data, map) {
 	});
 	
 	var dataLayers = {
-		"Pre 1830": layer1830,
+		"All data": layerAll
+		"Pre-1830": layer1830,
 		"1831-1840": layer1840,
 		"1841-1850": layer1850,
 		"1851-1860": layer1860,
