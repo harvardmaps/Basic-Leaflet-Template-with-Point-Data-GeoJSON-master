@@ -108,7 +108,7 @@ function dataLayer(data, map) {
 	};
 	
 	//attempt at filter options in control
-	var layer1830 = L.geoJson(data, {
+	var layerAll = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
                 click: whenClicked
