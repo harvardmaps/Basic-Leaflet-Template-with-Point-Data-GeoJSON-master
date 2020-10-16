@@ -75,29 +75,27 @@ function whenClicked(e) {
 function dataLayer(data, map) {
 	
 	// attempt to define overlays and overlay group within the function
-	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{-y}.png', {
-		tms: true, 
+	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{y}.png', {
 		attribution: 'Leventhal Map & Education Center'
 	});
-	
+
 	var Beers_1874 = L.tileLayer(
 		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059015410/tiles/{z}/{x}/{-y}.png', {
 			tms: true, 
 			attribution: 'Leventhal Map & Education Center'
 		}
 	);
-	
-	var Hopkins_1874 = L.tileLayer(
-		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{-y}.png', {
-			tms: true, 
+
+    var Hopkins_1874 = L.tileLayer(
+		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{y}.png', {
 			attribution: 'Leventhal Map & Education Center'
 		}
-	);
-		
+    );
+    
 	var overlays = {
-	"Hopkins, 1874" : Hopkins_1874,
+    "Hopkins, 1874" : Hopkins_1874,
 	"F. W. Beers & Co., 1874" : Beers_1874,
-	"Sanborn, 1867" : Sanborn_1867
+    "Sanborn, 1867" : Sanborn_1867
 	};
 	
 	var geojsonMarkerOptions = {
