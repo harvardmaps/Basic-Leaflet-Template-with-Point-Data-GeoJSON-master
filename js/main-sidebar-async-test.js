@@ -190,7 +190,7 @@ function dataLayer(data, map) {
 	});
 	
 	var dataLayers = {
-		"All data": layerAll
+		"All data": layerAll,
 		"Pre-1830": layer1830,
 		"1831-1840": layer1840,
 		"1841-1850": layer1850,
