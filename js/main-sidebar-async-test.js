@@ -108,15 +108,17 @@ function dataLayer(data, map) {
 	};
 	
 	//add filter options in control
-	/*
 	var layerAll = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
                 click: whenClicked
             })
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
 		}
-	}).addTo(map);
-	*/
+	});
+
     var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
