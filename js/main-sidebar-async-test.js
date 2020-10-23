@@ -193,19 +193,19 @@ function dataLayer(data, map) {
 	markersAll.addLayer(layerAll);
 
 	var markers1830 = L.markerClusterGroup();
-	markersAll.addLayer(layer1830);
+	markers1830.addLayer(layer1830);
 
 	var markers1840 = L.markerClusterGroup();
-	markersAll.addLayer(layer1840);
+	markers1840.addLayer(layer1840);
 
 	var markers1850 = L.markerClusterGroup();
-	markersAll.addLayer(layer1850);
+	markers1850.addLayer(layer1850);
 
 	var markers1860 = L.markerClusterGroup();
-	markersAll.addLayer(layer1860);
+	markers1860.addLayer(layer1860);
 
 	var markers1870 = L.markerClusterGroup();
-	markersAll.addLayer(layer1870);
+	markers1870.addLayer(layer1870);
 
 	var dataLayers = {
 		"All data": markersAll,
