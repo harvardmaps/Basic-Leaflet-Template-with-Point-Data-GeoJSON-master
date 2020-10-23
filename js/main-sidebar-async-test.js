@@ -108,6 +108,7 @@ function dataLayer(data, map) {
 	};
 	
 	//add filter options in control
+	/*
 	var layerAll = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -115,7 +116,7 @@ function dataLayer(data, map) {
             })
 		}
 	}).addTo(map);
-	
+	*/
     var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
