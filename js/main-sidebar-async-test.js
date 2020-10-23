@@ -191,6 +191,7 @@ function dataLayer(data, map) {
 	
 	var markersAll = L.markerClusterGroup();
 	markersAll.addLayer(layerAll);
+	map.addLayer(markersAll);
 
 	var markers1830 = L.markerClusterGroup();
 	markers1830.addLayer(layer1830);
