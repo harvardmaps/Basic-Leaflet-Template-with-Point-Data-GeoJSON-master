@@ -115,9 +115,6 @@ function dataLayer(data, map) {
             })
 		}
 	}).addTo(map);
-
-	var markers = L.markerClusterGroup();
-	markers.addLayer(layerAll);
 	
     var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
@@ -189,16 +186,34 @@ function dataLayer(data, map) {
 		}
 	});
 	
+	var markersAll = L.markerClusterGroup();
+	markersAll.addLayer(layerAll);
+
+	var markers1830 = L.markerClusterGroup();
+	markersAll.addLayer(layer1830);
+
+	var markers1840 = L.markerClusterGroup();
+	markersAll.addLayer(layer1840);
+
+	var markers1850 = L.markerClusterGroup();
+	markersAll.addLayer(layer1850);
+
+	var markers1860 = L.markerClusterGroup();
+	markersAll.addLayer(layer1860);
+
+	var markers1870 = L.markerClusterGroup();
+	markersAll.addLayer(layer1870);
+
 	var dataLayers = {
-		"All data": layerAll,
-		"Pre-1830": layer1830,
-		"1831-1840": layer1840,
-		"1841-1850": layer1850,
-		"1851-1860": layer1860,
-		"1861-1870": layer1870
+		"All data": markersAll,
+		"Pre-1830": markers1830,
+		"1831-1840": markers1840,
+		"1841-1850": markers1850,
+		"1851-1860": markers1860,
+		"1861-1870": markers1870
 	};
 
-	L.control.layers(dataLayers, overlays).addTo(map);
+	L.control.layers(dataLayers, overlays, { collapsed: false }).addTo(map);
 }
 
 function removeFeatures() {
