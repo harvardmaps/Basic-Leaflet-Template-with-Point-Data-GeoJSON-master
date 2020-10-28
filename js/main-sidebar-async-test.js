@@ -199,7 +199,7 @@ function dataLayer(data, map) {
 			return L.circleMarker(latlng, geojsonMarkerOptions);
 		},
 		filter: function(feature) {
-			return feature.feature.properties.TITLE_1 != ""
+			return feature.properties.TITLE_1 != ""
 		}
 	});
 	
