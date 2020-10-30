@@ -21,7 +21,7 @@ html, body{
 }
 
 /* browser adds margin by default, and that adds a scrollbar ... no good */
-#body {
+body {
   margin: 0;
   overflow:hidden;
   overflow-x:hidden;
