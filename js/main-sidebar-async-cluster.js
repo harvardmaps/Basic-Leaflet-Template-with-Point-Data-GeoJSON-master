@@ -111,7 +111,8 @@ function dataLayer(data, map) {
 	var layerAll = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
-                click: whenClicked
+				click: whenClicked,
+				keypress: whenClicked
             })
 		},
 		pointToLayer : function (feature, latlng) {
@@ -122,7 +123,8 @@ function dataLayer(data, map) {
     var layer1830 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
-                click: whenClicked
+				click: whenClicked,
+				keypress: whenClicked
             })
 		},
 		pointToLayer : function (feature, latlng) {
@@ -136,7 +138,8 @@ function dataLayer(data, map) {
 	var layer1840 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
-                click: whenClicked
+				click: whenClicked,
+				keypress: whenClicked
             })
 		},
 		pointToLayer : function (feature, latlng) {
@@ -150,7 +153,8 @@ function dataLayer(data, map) {
 	var layer1850 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
-                click: whenClicked
+				click: whenClicked,
+				keypress: whenClicked
             })
 		},
 		pointToLayer : function (feature, latlng) {
@@ -164,7 +168,8 @@ function dataLayer(data, map) {
 	var layer1860 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
-                click: whenClicked
+				click: whenClicked,
+				keypress: whenClicked
             })
 		},
 		pointToLayer : function (feature, latlng) {
@@ -178,7 +183,8 @@ function dataLayer(data, map) {
 	var layer1870 = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
-                click: whenClicked
+				click: whenClicked,
+				keypress: whenClicked
             })
 		},
 		pointToLayer : function (feature, latlng) {
@@ -186,6 +192,21 @@ function dataLayer(data, map) {
 		},
 		filter: function(feature) {
 			return feature.properties.END_LOC <= 1870 && feature.properties.END_LOC > 1860
+		}
+	});
+
+	var layerResources = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            layer.on({
+				click: whenClicked,
+				keypress: whenClicked
+            })
+		},
+		pointToLayer : function (feature, latlng) {
+			return L.circleMarker(latlng, geojsonMarkerOptions);
+		},
+		filter: function(feature) {
+			return feature.properties.TITLE_1 != ""
 		}
 	});
 	
@@ -208,13 +229,17 @@ function dataLayer(data, map) {
 	var markers1870 = L.markerClusterGroup();
 	markers1870.addLayer(layer1870);
 
+	var markersResources = L.markerClusterGroup();
+	markersResources.addLayer(layerResources);
+
 	var dataLayers = {
 		"All data": markersAll,
 		"Pre-1830": markers1830,
 		"1831-1840": markers1840,
 		"1841-1850": markers1850,
 		"1851-1860": markers1860,
-		"1861-1870": markers1870
+		"1861-1870": markers1870,
+		"Has Library Resource": markersResources
 	};
 
 	L.control.layers(dataLayers, overlays, { collapsed: false }).addTo(map);

@@ -12,9 +12,16 @@ html, body{
 	width:100%;
 	/*bottom:0;*/
 }
+.geojson-Icon{
+  height: 5px;
+  width: 5px;
+  background-color: #0000ff;
+  border-radius: 50%;
+  display: inline-block;
+}
 
 /* browser adds margin by default, and that adds a scrollbar ... no good */
-body {
+#body {
   margin: 0;
   overflow:hidden;
   overflow-x:hidden;
@@ -47,3 +54,4 @@ body {
   top: 0;
   left: 10px;
 }
+

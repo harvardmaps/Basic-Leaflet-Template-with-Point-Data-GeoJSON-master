@@ -1,10 +1,10 @@
 // declare map in global scope
 var historicalDataMap;
 
-//function to add the data to the map with the display content
+//function to add the data to the map with controls to toggle layers
 function dataLayer(data, map) {
 	
-	// attempt to define overlays and overlay group within the function
+	// define overlays and overlay group within the function
 	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{y}.png', {
 		attribution: 'Leventhal Map & Education Center'
 	});
@@ -188,5 +188,13 @@ $.when(datapoints).done(function() {
 
     historicalDataMap.addControl( L.control.zoom({position: 'bottomright'}) );
 
+    var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        subdomains: 'abcd',
+        minZoom: 0,
+        maxZoom: 21,
+        ext: 'png'
+    }).addTo(historicalDataMap);
+
     dataLayer(datapoints, map)
-};
+});

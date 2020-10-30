@@ -98,14 +98,7 @@ function dataLayer(data, map) {
     "Sanborn, 1867" : Sanborn_1867
 	};
 	
-	var geojsonMarkerOptions = {
-        radius : 8,
-        fillColor : "#0000ff",
-        color : "000",
-        weight : 1, 
-        opacity : 1,
-        fillOpacity : .8
-	};
+	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
 	
 	//add filter options in control
 	var layerAll = L.geoJson(data, {
@@ -116,7 +109,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
+			return L.marker(latlng, geojsonIcon);
 		}
 	});
 
@@ -128,7 +121,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
+			return L.marker(latlng, {icon: geojsonIcon});
 		},
 		filter: function(feature) {
 			return feature.properties.END_LOC <= 1830
@@ -143,7 +136,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
+			return L.marker(latlng, {icon: geojsonIcon});
 		},
 		filter: function(feature) {
 			return feature.properties.END_LOC <= 1840 && feature.properties.END_LOC > 1830
@@ -158,7 +151,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
+			return L.marker(latlng, {icon: geojsonIcon});
 		},
 		filter: function(feature) {
 			return feature.properties.END_LOC <= 1850 && feature.properties.END_LOC > 1840
@@ -173,7 +166,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
+			return L.marker(latlng, {icon: geojsonIcon});
 		},
 		filter: function(feature) {
 			return feature.properties.END_LOC <= 1860 && feature.properties.END_LOC > 1850
@@ -188,7 +181,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
+			return L.marker(latlng, {icon: geojsonIcon});
 		},
 		filter: function(feature) {
 			return feature.properties.END_LOC <= 1870 && feature.properties.END_LOC > 1860
@@ -203,7 +196,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.circleMarker(latlng, geojsonMarkerOptions);
+			return L.marker(latlng, {icon: geojsonIcon});
 		},
 		filter: function(feature) {
 			return feature.properties.TITLE_1 != ""
