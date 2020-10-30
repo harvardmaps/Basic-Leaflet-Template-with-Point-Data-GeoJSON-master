@@ -109,7 +109,7 @@ function dataLayer(data, map) {
             })
 		},
 		pointToLayer : function (feature, latlng) {
-			return L.marker(latlng, geojsonIcon);
+			return L.marker(latlng, {icon: geojsonIcon});
 		}
 	});
 
