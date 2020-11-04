@@ -100,7 +100,8 @@ function dataLayer(data, map) {
 	
 	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
 	
-	//add filter options in control
+	//Call all the geoJson data as individual layers for the map. 
+	//Add filter options and event functions. Use marker not circlemarker to get keyboard access.
 	var layerAll = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
             layer.on({
@@ -203,6 +204,7 @@ function dataLayer(data, map) {
 		}
 	});
 	
+	//Create markercluster groups for all the layers. Add a keypress listener for each cluster
 	var markersAll = L.markerClusterGroup();
 	markersAll.addLayer(layerAll);
 	markersAll.on('clusterkeypress', function (a) {
@@ -211,26 +213,43 @@ function dataLayer(data, map) {
 
 	map.addLayer(markersAll);
 	
-
-
 	var markers1830 = L.markerClusterGroup();
 	markers1830.addLayer(layer1830);
+	markers1830.on('clusterkeypress', function (a) {
+		a.layer.zoomToBounds();
+	});
 
 	var markers1840 = L.markerClusterGroup();
 	markers1840.addLayer(layer1840);
+	markers1840.on('clusterkeypress', function (a) {
+		a.layer.zoomToBounds();
+	});
 
 	var markers1850 = L.markerClusterGroup();
 	markers1850.addLayer(layer1850);
+	markers1850.on('clusterkeypress', function (a) {
+		a.layer.zoomToBounds();
+	});
 
 	var markers1860 = L.markerClusterGroup();
 	markers1860.addLayer(layer1860);
+	markers1860.on('clusterkeypress', function (a) {
+		a.layer.zoomToBounds();
+	});
 
 	var markers1870 = L.markerClusterGroup();
 	markers1870.addLayer(layer1870);
+	markers1870.on('clusterkeypress', function (a) {
+		a.layer.zoomToBounds();
+	});
 
 	var markersResources = L.markerClusterGroup();
 	markersResources.addLayer(layerResources);
+	markersResources.on('clusterkeypress', function (a) {
+		a.layer.zoomToBounds();
+	});
 	
+	//Add layers to controls and add controls to the map
 	var dataLayers = {
 		"All data": markersAll,
 		"Pre-1830": markers1830,
