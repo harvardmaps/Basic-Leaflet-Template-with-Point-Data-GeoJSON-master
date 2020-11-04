@@ -224,7 +224,7 @@ function dataLayer(data, map) {
 
 	var markersResources = L.markerClusterGroup();
 	markersResources.addLayer(layerResources);
-
+	
 	var dataLayers = {
 		"All data": markersAll,
 		"Pre-1830": markers1830,
@@ -235,7 +235,8 @@ function dataLayer(data, map) {
 		"Has Library Resource": markersResources
 	};
 
-	L.control.layers(dataLayers, overlays, { collapsed: false }).addTo(map);
+	var dataControl = L.control.layers(dataLayers, null, { position: 'topright', collapsed: false }).addTo(map);
+	var overlayControl = L.control.layers(overlays, null, { position: 'topright', collapsed: false }).addTo(map);
 }
 
 function removeFeatures() {
