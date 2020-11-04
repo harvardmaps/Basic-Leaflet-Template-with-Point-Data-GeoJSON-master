@@ -205,7 +205,7 @@ function dataLayer(data, map) {
 	
 	var markersAll = L.markerClusterGroup();
 	markersAll.addLayer(layerAll);
-	markersAll.on('clusterclick', function (a) {
+	markersAll.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
 
