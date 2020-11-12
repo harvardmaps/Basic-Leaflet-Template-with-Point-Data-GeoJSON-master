@@ -104,7 +104,8 @@ function dataLayer(data, map) {
 		"McIntyre, 1852" : McIntyre_1852,
     	"Hopkins, 1874" : Hopkins_1874,
 		"F. W. Beers & Co., 1874" : Beers_1874,
-    	"Sanborn, 1867" : Sanborn_1867
+		"Sanborn, 1867" : Sanborn_1867,
+		"None" : NULL
 	};
 	
 	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
