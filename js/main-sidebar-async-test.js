@@ -100,7 +100,7 @@ function dataLayer(data, map) {
 		}
     );
 	
-	var noLayer = L.tileLayer();
+	var noLayer = L.tileLayer('');
 
 	var overlays = {
 		"McIntyre, 1852" : McIntyre_1852,
