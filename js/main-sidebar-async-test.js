@@ -105,7 +105,7 @@ function dataLayer(data, map) {
     	"Hopkins, 1874" : Hopkins_1874,
 		"F. W. Beers & Co., 1874" : Beers_1874,
 		"Sanborn, 1867" : Sanborn_1867,
-		"None" : NULL
+		"None" : null
 	};
 	
 	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
