@@ -90,12 +90,20 @@ function dataLayer(data, map) {
 		'https://s3.us-east-2.wasabisys.com/urbanatlases/39999059010650/tiles/{z}/{x}/{y}.png', {
 			attribution: 'Leventhal Map & Education Center'
 		}
+	);
+	
+	var McIntyre_1852 = L.tileLayer(
+		'https://bburns.share.library.harvard.edu/tmsprojects/McIntyreXYZ/{z}/{x}/{y}.png', {
+			tms: true,
+			attribution: 'Harvard Map Collection'
+		}
     );
     
 	var overlays = {
-    "Hopkins, 1874" : Hopkins_1874,
-	"F. W. Beers & Co., 1874" : Beers_1874,
-    "Sanborn, 1867" : Sanborn_1867
+		"McIntyre, 1852" : McIntyre_1852,
+    	"Hopkins, 1874" : Hopkins_1874,
+		"F. W. Beers & Co., 1874" : Beers_1874,
+    	"Sanborn, 1867" : Sanborn_1867
 	};
 	
 	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
