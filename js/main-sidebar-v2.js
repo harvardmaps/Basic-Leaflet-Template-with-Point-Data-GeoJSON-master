@@ -316,6 +316,7 @@ function getData(map){
         container: 'sidebar'
 
     }).addTo(map);
+    sidebar.open('home');
 
     var contentPanel = {
         id: 'sidebar-content',
