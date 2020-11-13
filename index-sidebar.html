@@ -29,27 +29,42 @@
 		<script type="text/javascript"  src ="lib/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>
 		<link rel="stylesheet" href="lib/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css">
 		<link rel="stylesheet" href="lib/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css">
+
+		<!-- 👇 grabs the MarkerCluster plugin and css  --> 
+		<script type="text/javascript"  src ="lib/leaflet-sidebar-v2/js/leaflet-sidebar.min.js"></script>
+		<link rel="stylesheet" href="lib/leaflet-sidebar-v2/css/leaflet-sidebar.css">	
   </head>
 
   <body>
-	<!-- container for the map, with custom id name "#map" --> 
-	<div id = "sidebar">
-		<div id="controls">   
-		   <button id="reset-button">Return to Introduction</button>
+	<!-- container for sidebar --> 
+	<div id = "sidebar" class='leaflet-sidebar'>
+		<div class='leaflet-sidebar-tabs'>   
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-bars active"></i></a></li>
+			</ul>
+			<ul role="tablist">
+                <li><a href="https://library.harvard.edu/libraries/harvard-map-collection"><i class="fa fa-github"></i></a></li>
+            </ul>
 		</div>
-		<div id="sidebar-content" aria-live="assertive">   
-		   <h2>Discovery Portal for Black History in Boston</h2>
-			 <p>Click on a point to learn more about Black History in Boston</p>
-			 <li>Data data data</li>
-			 <li>Data data data</li>
-		   <li>Data data data</li>
+		<div class="leaflet-sidebar-content">
+			<div class="leaflet-sidebar-pane" id="home">
+				<h1 class="leaflet-sidebar-header">
+					Mapping Black Boston
+				</h1>
+				<p>This is a test area for this project.</p>
+				<p>Mapping Black Boston is interactive discovery portal for Harvard Library resources in the Black history of Boston</p>
+				<p>Click on any point to learn about that place and find links to Harvard Library materials.</p>
+				<p>You can filter data and add overlays of historic maps by using the buttons in the upper right.</p>
+			</div>
 		</div>
-	  </div>
+	</div>
 	  <!-- container for the top banner, with custom id name "#banner" --> 
-	  <div id="banner"></div>
-	  <div role="application" id="map"></div>
+	<div id="banner"></div>
+
+	  <!-- container for the map, with custom id name "#map" --> 	
+	<div role="application" id="map"></div>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
-	<script type= "text/javascript" src = "js/main-sidebar-async-test.js"> </script>
+	<script type= "text/javascript" src = "js/main-sidebar-v2.js"> </script>
 
 </body>
 </html>
