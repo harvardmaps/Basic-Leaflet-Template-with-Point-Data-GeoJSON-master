@@ -68,8 +68,9 @@ function whenClicked(e) {
     type = feature.feature.properties.Type;
 
     content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + notes + source;
-    $( "#sidebar-content" ).html("<h2>Information on this location</h2>" + content);
-    };
+	sidebar.setContent('<h1>Sidebar for popup content</h1>' + 
+	'<h2>Information about this place</h2><br><strong>Name: ' + content);
+};
 
 //function to add the data to the map with the display content
 function dataLayer(data, map) {
@@ -277,7 +278,7 @@ function dataLayer(data, map) {
 }
 
 function removeFeatures() {
-	$( "#sidebar-content" ).html("<h2>Introduction to the site</h2> <p>Some ideas here</p>");
+	sidebar.setContent("<h2>Introduction to the site</h2> <p>Some ideas here</p>");
 };
 
 $( "#reset-button" ).click(function() {
@@ -310,21 +311,15 @@ function getData(map){
         ext: 'png'
     }).addTo(map);
 
-//Make a sidebar that doesn't close with two tabs
-    var sidebar = L.control.sidebar({
-        closebutton: false,
-        container: 'sidebar'
-
-    }).addTo(map);
-    sidebar.open('home');
-
-    var contentPanel = {
-        id: 'sidebar-content',
-        tab: '<i class="fa fa-arrows"></i>',
-        title: 'Location Info'
-    };
-    sidebar.addPanel(contentPanel);
-
+	var sidebar = L.control.sidebar('sidebar', {
+		closeButton: false,
+		position: 'left'
+	});
+	map.addControl(sidebar);
+	
+	setTimeout(function () {
+		sidebar.show();
+	}, 500);
 
 //part that gets the data
  $.ajax("data/historical_data.geojson",{

@@ -1,0 +1,73 @@
+/* WHOLE MAP */
+
+/* html body takes up whole screen */
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
+/* map occupies entire screen */
+#map{
+	height:100%;
+	width:100%;
+	/*bottom:0;*/
+}
+.geojson-Icon{
+  height: 5px;
+  width: 5px;
+  background-color: #0000ff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* browser adds margin by default, and that adds a scrollbar ... no good */
+body {
+  margin: 0;
+  overflow:hidden;
+  overflow-x:hidden;
+}
+
+.navbar{
+	position:absolute;
+	right:0;
+	width:100%;
+}
+
+/* styles all the navbar links */
+a.nav-link{
+	color:white !important;	
+	font-family: 'Nunito', sans-serif !important;
+}
+
+/* makes navbar appear on atop the map, positions it, and sets desired background color */
+.navbar.navbar-expand-lg.navbar-light.bg-light{
+	z-index:9999999 !important;
+	background-color:rgba(33,69,31,1)!important;
+	top:0 !important;
+}
+
+/* toggle button styling  */
+/* overrides Bootstrap default for button styling */
+.btn-info{
+	background-color:rgba(0,0,0,0);
+	border-color: rgba(0,0,0,0);
+}
+
+/* toggle button styling  */
+/* overrides Bootstrap default for button styling */
+.btn-info:hover{
+	background-color:rgba(0,0,0,0);
+	border: none !important;
+}
+
+/* toggle button styling  */
+/* overrides Bootstrap default for button styling */
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
+body > #sidebar {
+  display: none;
+}
+
+
