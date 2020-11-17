@@ -82,7 +82,7 @@ function getData(map){
 		"None" : noLayer
 	};
 
-	var overlayControl = L.control.layers(overlays, null, { position: 'topright', collapsed: false }).addTo(map);
+	var overlayControl = L.control.layers(overlays, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
 
 //part that gets the data
@@ -323,7 +323,7 @@ function getData(map){
 		"Has Library Resource": markersResources
 	};
 
-	var dataControl = L.control.layers(dataLayers, null, { position: 'topright', collapsed: false }).addTo(map);
+	var dataControl = L.control.layers(dataLayers, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
 		
 
