@@ -80,7 +80,7 @@ function getData(map){
 		"Sanborn, 1867" : Sanborn_1867,
 		"None" : noLayer
 	};
-	
+
 	map.addControl( L.control.zoom({position: 'bottomright'}) )
 	var overlayControl = L.control.layers(overlays, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
@@ -156,7 +156,7 @@ function getData(map){
 		action = feature.feature.properties.ACTION
 		type = feature.feature.properties.Type;
 
-		content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + notes + source;
+		content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + "<br>" + notes + "<br>" + source;
 		sidebar.setContent('<h1>Mapping Black Boston</h1>' + 
 		'<h2>Information about this place</h2>' + content);
 	};
