@@ -29,6 +29,7 @@ body {
 
 /* Add a black background color to the top navigation */
 .nav {
+	z-index: 99999999;
 	position: absolute;
 	right: 0;
 	width: 100%;
