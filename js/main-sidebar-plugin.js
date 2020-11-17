@@ -1,8 +1,6 @@
 // declare map in global scope
 var historicalDataMap;
 
-
-
 //instantiate map 
 function createMap(){
 	 historicalDataMap = L.map('map',{
@@ -45,7 +43,7 @@ function getData(map){
 		"<p>You can filter data and add overlays of historic maps by using the buttons buttons on the right.</p>");
 	});	
 		
-	// attempt to define overlays and overlay group within the function
+	// define overlays and overlay group within the function
 	var Sanborn_1867 = L.tileLayer('https://s3.us-east-2.wasabisys.com/urbanatlases/39999059012052/tiles/{z}/{x}/{y}.png', {
 		attribution: 'Leventhal Map & Education Center'
 	});
@@ -65,7 +63,6 @@ function getData(map){
 	
 	var McIntyre_1852 = L.tileLayer(
 		'https://bburns.share.library.harvard.edu/tmsprojects/mcintyre_tiles/{z}/{x}/{y}.png', {	
-		//'https://bburns.share.library.harvard.edu/tmsprojects/McIntyreXYZ/{z}/{x}/{y}.png', {
 			tms: true,
 			attribution: 'Harvard Map Collection'
 		}
@@ -81,6 +78,7 @@ function getData(map){
 		"None" : noLayer
 	};
 
+	// Add Zoom layer here so it is on the bottom then add control for data
 	map.addControl( L.control.zoom({position: 'bottomright'}) )
 	var overlayControl = L.control.layers(overlays, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
@@ -91,7 +89,7 @@ function getData(map){
 	 success: function(response){
 		 var datapoints = response.features;
 
-		 	//create sidebar content
+	//create sidebar content in a function to call when the user takes an action
 	function whenClicked(e) {
 		// e = event
 		var feature = e.target;
@@ -161,10 +159,11 @@ function getData(map){
 		'<h2>Information about this place</h2>' + content);
 	};
 
+	// Use this divIcon as marker to make it keyboard accessible and not ugly
 	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
 		
 	//Call all the geoJson data as individual layers for the map. 
-	//Add filter options and event functions. Use marker not circlemarker to get keyboard access.
+	//Add filter options and event functions.
 	var layerAll = L.geoJson(datapoints, {
 		onEachFeature: function(feature, layer) {
 			layer.on({
