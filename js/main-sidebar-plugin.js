@@ -15,7 +15,6 @@ function createMap(){
 
 	//call getdata function
 	getData(historicalDataMap);
-	historicalDataMap.addControl( L.control.zoom({position: 'bottomright'}) )
 };
 
 //function to retrieve map data and place it on the map
@@ -43,7 +42,7 @@ function getData(map){
 		sidebar.setContent("<h1>Mapping Black Boston</h1><p>This is a test area for this project.</p>" +
 		"<p>Mapping Black Boston is interactive discovery portal for Harvard Library resources in the Black history of Boston</p>" +
 		"<p>Click on any point to learn about that place and find links to Harvard Library materials.</p>" +
-		"<p>You can filter data and add overlays of historic maps by using the buttons in the upper right.</p>");
+		"<p>You can filter data and add overlays of historic maps by using the buttons buttons on the right.</p>");
 	});	
 		
 	// attempt to define overlays and overlay group within the function
@@ -324,7 +323,7 @@ function getData(map){
 	};
 
 	var dataControl = L.control.layers(dataLayers, null, { position: 'bottomright', collapsed: false }).addTo(map);
-
+	map.addControl( L.control.zoom({position: 'bottomright'}) )
 		
 
 
