@@ -23,33 +23,38 @@
 		<script type="text/javascript"  src ="lib/leaflet/leaflet.js"></script>
 
 		<!-- points to our own custom style sheet so we can make things look snazzy --> 
-		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style-sidebar.css" rel="stylesheet">
 
 		<!-- 👇 grabs the MarkerCluster plugin and css  --> 
 		<script type="text/javascript"  src ="lib/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>
 		<link rel="stylesheet" href="lib/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css">
 		<link rel="stylesheet" href="lib/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css">
+
+		<!-- 👇 grabs the sidebar and its css  --> 
+		<script type="text/javascript"  src ="lib/leaflet-sidebar-master/src/L.Control.Sidebar.js"></script>
+		<link rel="stylesheet" href="lib/leaflet-sidebar-master/src/L.Control.Sidebar.css">	
   </head>
 
   <body>
-	<!-- container for the map, with custom id name "#map" --> 
+	<!-- container for the top banner, with custom id name "#banner" --> 
+	<div class="nav">
+		<a class="button" id="Home" aria-label="Reset Sidebar">Introduction</button>
+		<a class="button" href="https://library.harvard.edu/libraries/harvard-map-collection">Harvard Map Collection</a>
+		<a class="button" href="https://library.harvard.edu/">Harvard Library</a>
+	</div>
+	<!-- container for sidebar --> 
 	<div id = "sidebar">
-		<div id="controls">   
-		   <button id="reset-button">Return to Introduction</button>
-		</div>
-		<div id="sidebar-content" aria-live="assertive">   
-		   <h2>Discovery Portal for Black History in Boston</h2>
-			 <p>Click on a point to learn more about Black History in Boston</p>
-			 <li>Data data data</li>
-			 <li>Data data data</li>
-		   <li>Data data data</li>
-		</div>
-	  </div>
-	  <!-- container for the top banner, with custom id name "#banner" --> 
-	  <div id="banner"></div>
-	  <div role="application" id="map"></div>
+		<h1>Mapping Black Boston</h1>
+		<p>This is a test area for this project.</p>
+		<p>Mapping Black Boston is interactive discovery portal for Harvard Library resources in the Black history of Boston</p>
+		<p>Click on any point to learn about that place and find links to Harvard Library materials.</p>
+		<p>You can filter data and add overlays of historic maps by using the buttons in the upper right.</p>
+	</div>
+
+	  <!-- container for the map, with custom id name "#map" --> 	
+	<div role="application" id="map"></div>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
-	<script type= "text/javascript" src = "js/main-sidebar-async-test.js"> </script>
+	<script type= "text/javascript" src = "js/main-sidebar-plugin.js"> </script>
 
 </body>
 </html>

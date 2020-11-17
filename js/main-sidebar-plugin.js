@@ -277,14 +277,6 @@ function dataLayer(data, map) {
 	var overlayControl = L.control.layers(overlays, null, { position: 'topright', collapsed: false }).addTo(map);
 }
 
-function removeFeatures() {
-	sidebar.setContent("<h2>Introduction to the site</h2> <p>Some ideas here</p>");
-};
-
-$( "#reset-button" ).click(function() {
-	removeFeatures();
-});
-
 //instantiate map 
 function createMap(){
 	 historicalDataMap = L.map('map',{
@@ -321,6 +313,12 @@ function getData(map){
 		sidebar.show();
 	}, 500);
 
+	$( "#Home" ).click(function() {
+		sidebar.setContent("<h1>Mapping Black Boston</h1><p>This is a test area for this project.</p>" +
+		"<p>Mapping Black Boston is interactive discovery portal for Harvard Library resources in the Black history of Boston</p>" +
+		"<p>Click on any point to learn about that place and find links to Harvard Library materials.</p>" +
+		"<p>You can filter data and add overlays of historic maps by using the buttons in the upper right.</p>");
+	});
 //part that gets the data
  $.ajax("data/historical_data.geojson",{
 	dataType: "json",
