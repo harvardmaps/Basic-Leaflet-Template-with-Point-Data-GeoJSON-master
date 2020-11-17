@@ -158,7 +158,7 @@ function getData(map){
 
 		content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + notes + source;
 		sidebar.setContent('<h1>Mapping Black Boston</h1>' + 
-		'<h2>Information about this place</h2><br><strong>Name: ' + content);
+		'<h2>Information about this place</h2>' + content);
 	};
 
 	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
