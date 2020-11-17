@@ -80,7 +80,8 @@ function getData(map){
 		"Sanborn, 1867" : Sanborn_1867,
 		"None" : noLayer
 	};
-
+	
+	map.addControl( L.control.zoom({position: 'bottomright'}) )
 	var overlayControl = L.control.layers(overlays, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
 
@@ -323,7 +324,6 @@ function getData(map){
 	};
 
 	var dataControl = L.control.layers(dataLayers, null, { position: 'bottomright', collapsed: false }).addTo(map);
-	map.addControl( L.control.zoom({position: 'bottomright'}) )
 		
 
 
