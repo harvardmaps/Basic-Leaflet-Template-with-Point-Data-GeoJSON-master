@@ -91,11 +91,15 @@ function getData(map){
 
 	// Use this divIcon as marker to make it keyboard accessible and not ugly
 	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
+	var activeIcon = L.divIcon({className: 'geojson-Icon-active'});
 
 	//create sidebar content in a function to call when the user takes an action
 	function whenClicked(e) {
 		// e = event
 		var feature = e.target;
+
+		// Change color of icon
+		//feature.setIcon(activeIcon);
 
 		// Build the display name
 		if (feature.feature.properties.NAME_2 == null){

@@ -28,7 +28,6 @@ html, body{
   display: inline-block;
 }
 */
-
 /* browser adds margin by default, and that adds a scrollbar ... no good */
 body {
   margin: 0;
