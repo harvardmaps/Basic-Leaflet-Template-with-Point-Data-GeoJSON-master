@@ -89,10 +89,14 @@ function getData(map){
 	 success: function(response){
 		 var datapoints = response.features;
 
+	// Use this divIcon as marker to make it keyboard accessible and not ugly
+	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
+
 	//create sidebar content in a function to call when the user takes an action
 	function whenClicked(e) {
 		// e = event
 		var feature = e.target;
+
 		// Build the display name
 		if (feature.feature.properties.NAME_2 == null){
 			display_name = feature.feature.properties.NAME_1
@@ -158,9 +162,6 @@ function getData(map){
 		sidebar.setContent('<h1>Mapping Black Boston</h1>' + 
 		'<h2>Information about this place</h2>' + content);
 	};
-
-	// Use this divIcon as marker to make it keyboard accessible and not ugly
-	var geojsonIcon = L.divIcon( {className: 'geojson-Icon'});
 		
 	//Call all the geoJson data as individual layers for the map. 
 	//Add filter options and event functions.
