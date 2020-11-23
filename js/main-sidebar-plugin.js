@@ -282,11 +282,7 @@ function getData(map){
 	});
 
 	//Create markercluster groups for all the layers. Add a keypress listener for each cluster
-	var markersAll = L.markerClusterGroup({ maxClusterRadius: function(zoom){
-		if(zoom == 14) {return 1}
-		else{return 80}	
-		} 
-	});
+	var markersAll = L.markerClusterGroup({ maxClusterRadius: getRadius});
 	markersAll.addLayer(layerAll);
 	markersAll.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
