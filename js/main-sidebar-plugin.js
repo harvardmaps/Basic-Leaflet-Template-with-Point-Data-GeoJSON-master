@@ -272,7 +272,7 @@ function getData(map){
 	});
 	
 	//Create markercluster groups for all the layers. Add a keypress listener for each cluster
-	var markersAll = L.markerClusterGroup();
+	var markersAll = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 	markersAll.addLayer(layerAll);
 	markersAll.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
@@ -280,37 +280,37 @@ function getData(map){
 
 	map.addLayer(markersAll);
 	
-	var markers1830 = L.markerClusterGroup();
+	var markers1830 = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 	markers1830.addLayer(layer1830);
 	markers1830.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
 
-	var markers1840 = L.markerClusterGroup();
+	var markers1840 = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 	markers1840.addLayer(layer1840);
 	markers1840.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
 
-	var markers1850 = L.markerClusterGroup();
+	var markers1850 = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 	markers1850.addLayer(layer1850);
 	markers1850.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
 
-	var markers1860 = L.markerClusterGroup();
+	var markers1860 = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 	markers1860.addLayer(layer1860);
 	markers1860.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
 
-	var markers1870 = L.markerClusterGroup();
+	var markers1870 = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 	markers1870.addLayer(layer1870);
 	markers1870.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
 
-	var markersResources = L.markerClusterGroup();
+	var markersResources = L.markerClusterGroup({ disableClusteringAtZoom: 17 });
 	markersResources.addLayer(layerResources);
 	markersResources.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
