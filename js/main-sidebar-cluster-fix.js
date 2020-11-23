@@ -82,17 +82,6 @@ function getData(map){
 	map.addControl( L.control.zoom({position: 'bottomright'}) )
 	var overlayControl = L.control.layers(overlays, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
-	// Function to return a very small radius for the max zoom
-	/* map.on('zoomend')
-	
-	var getRadius = function () {
-		if (map.getZoom() == 17){
-			return 1
-		}
-		else { return 80}
-	};
-*/
-
 //part that gets the data
  $.ajax("data/historical_data.geojson",{
 	dataType: "json",
@@ -176,7 +165,7 @@ function getData(map){
 		sidebar.setContent('<h1>Mapping Black Boston</h1>' + 
 		'<h2>Information about this place</h2>' + content);
 	};
-		
+
 	//Call all the geoJson data as individual layers for the map. 
 	//Add filter options and event functions.
 	var layerAll = L.geoJson(datapoints, {
@@ -280,11 +269,11 @@ function getData(map){
 			return feature.properties.TITLE_1 != ""
 		}
 	});
-
-	//Create markercluster groups for all the layers. Add a keypress listener for each cluster
+    
+    //Create markercluster groups for all the layers. Add a keypress listener for each cluster
 	var markersAll = L.markerClusterGroup();
-	markersAll.addLayer(layerAll);
-	markersAll.on('clusterkeypress', function (a) {
+	    markersAll.addLayer(layerAll);
+	    markersAll.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
 
@@ -325,8 +314,7 @@ function getData(map){
 	markersResources.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
 	});
-	
-	//Add layers to controls and add controls to the map
+    //Add layers to controls and add controls to the map
 	var dataLayers = {
 		"All data": markersAll,
 		"Pre-1830": markers1830,
@@ -337,8 +325,147 @@ function getData(map){
 		"Has Library Resource": markersResources
 	};
 
-	var dataControl = L.control.layers(dataLayers, null, { position: 'bottomright', collapsed: false }).addTo(map);
-		
+    var dataControl = L.control.layers(dataLayers, null, { position: 'bottomright', collapsed: false }).addTo(map);
+
+    //Create markercluster groups for all the layers with a low cluster radius. Add a keypress listener for each cluster    
+    var markersAllZoom = L.markerClusterGroup( {maxClusterRadius: 2});
+    markersAllZoom.addLayer(layerAll);
+    markersAllZoom.on('clusterkeypress', function (a) {
+        a.layer.zoomToBounds();
+    });
+    
+    var markers1830Zoom = L.markerClusterGroup({maxClusterRadius: 2});
+    markers1830.addLayer(layer1830);
+    markers1830.on('clusterkeypress', function (a) {
+        a.layer.zoomToBounds();
+    });
+
+    var markers1840Zoom = L.markerClusterGroup({maxClusterRadius: 2});
+    markers1840Zoom.addLayer(layer1840);
+    markers1840Zoom.on('clusterkeypress', function (a) {
+        a.layer.zoomToBounds();
+    });
+
+    var markers1850Zoom = L.markerClusterGroup({maxClusterRadius: 2});
+    markers1850Zoom.addLayer(layer1850);
+    markers1850Zoom.on('clusterkeypress', function (a) {
+        a.layer.zoomToBounds();
+    });
+
+    var markers1860Zoom = L.markerClusterGroup({maxClusterRadius: 2});
+    markers1860Zoom.addLayer(layer1860);
+    markers1860Zoom.on('clusterkeypress', function (a) {
+        a.layer.zoomToBounds();
+    });
+
+    var markers1870Zoom = L.markerClusterGroup({maxClusterRadius: 2});
+    markers1870Zoom.addLayer(layer1870);
+    markers1870Zoom.on('clusterkeypress', function (a) {
+        a.layer.zoomToBounds();
+    });
+
+    var markersResourcesZoom = L.markerClusterGroup({maxClusterRadius: 2});
+    markersResourcesZoom.addLayer(layerResources);
+    markersResourcesZoom.on('clusterkeypress', function (a) {
+        a.layer.zoomToBounds();
+    });
+    
+    //Add layers to controls and add controls to the map
+    var dataLayersZoom = {
+        "All data": markersAllZoom,
+        "Pre-1830": markers1830Zoom,
+        "1831-1840": markers1840Zoom,
+        "1841-1850": markers1850Zoom,
+        "1851-1860": markers1860Zoom,
+        "1861-1870": markers1870Zoom,
+        "Has Library Resource": markersResourcesZoom
+    };
+
+    var dataControlZoom = L.control.layers(dataLayersZoom, null, { position: 'bottomright', collapsed: false });
+
+    // Boolean that returns true when the zoom is above 16 
+    var zoomCheck = false
+    	
+    // Listener for Zoom to act differently near max Zoom
+	map.on('zoomend', function(e){
+        if (map.getZoom() == 16) {  
+            //Swap layers if moving below 17 zoom
+            if(zoomCheck == true) {
+                if (map.hasLayer(markersAllZoom)) {
+                    map.removeLayer(markersAllZoom);
+                    map.addLayer(markersAll);
+                };
+                if (map.hasLayer(markers1830Zoom)) {
+                    map.removeLayer(markers1830Zoom);
+                    map.addLayer(markers1830);
+                };
+                if (map.hasLayer(markers1840Zoom)) {
+                    map.removeLayer(markers1840Zoom);
+                    map.addLayer(markers1840);
+                };
+                if (map.hasLayer(markers1850Zoom)) {
+                    map.removeLayer(markers1850Zoom);
+                    map.addLayer(markers1850);
+                };
+                if (map.hasLayer(markers1860Zoom)) {
+                    map.removeLayer(markers1860Zoom);
+                    map.addLayer(markers1860);
+                };
+                if (map.hasLayer(markers1870Zoom)) {
+                    map.removeLayer(markers1870Zoom);
+                    map.addLayer(markers1870);
+                };
+                if (map.hasLayer(markersResourcesZoom)) {
+                    map.removeLayer(markersResourcesZoom)
+                    map.addLayer(markersResources);
+                };
+            map.removeControl(dataControlZoom);
+            map.addControl(dataControl);
+        }
+        // swap cluster layers if above 16 zoom
+        else if (map.getZoom() > 16){
+            if(zoomCheck == true) {
+                if (map.hasLayer(markersAll)) {
+                    map.removeLayer(markersAll);
+                    map.addLayer(markersAllZoom);
+                };
+                if (map.hasLayer(markers1830)) {
+                    map.removeLayer(markers1830);
+                    map.addLayer(markers1830Zoom);
+                };
+                if (map.hasLayer(markers1840)) {
+                    map.removeLayer(markers1840);
+                    map.addLayer(markers1840Zoom);
+                };
+                if (map.hasLayer(markers1850)) {
+                    map.removeLayer(markers1850);
+                    map.addLayer(markers1850Zoom);
+                };
+                if (map.hasLayer(markers1860)) {
+                    map.removeLayer(markers1860);
+                    map.addLayer(markers1860Zoom);
+                };
+                if (map.hasLayer(markers1870)) {
+                    map.removeLayer(markers1870);
+                    map.addLayer(markers1870Zoom);
+                };
+                if (map.hasLayer(markersResources)) {
+                    map.removeLayer(markersResources)
+                    map.addLayer(markersResourcesZoom);
+                };
+
+            map.removeControl(dataControl);
+            map.addControl(dataControlZoom);
+        }
+        zoomCheck = true;
+   
+        } 
+        // reset zoomCheck
+        else if (map.getZoom() < 16) {
+            zoomCheck = false;
+        } 
+    }
+	});
 
 
 // THREE IMPORTANT CLOSING BRACKETS AT THE END OF GETDATA() FUNCTION!
