@@ -335,8 +335,8 @@ function getData(map){
     });
     
     var markers1830Zoom = L.markerClusterGroup({maxClusterRadius: 2});
-    markers1830.addLayer(layer1830);
-    markers1830.on('clusterkeypress', function (a) {
+    markers1830Zoom.addLayer(layer1830);
+    markers1830Zoom.on('clusterkeypress', function (a) {
         a.layer.zoomToBounds();
     });
 
@@ -388,7 +388,7 @@ function getData(map){
     	
     // Listener for Zoom to act differently near max Zoom
 	map.on('zoomend', function(e){
-        if (map.getZoom() == 16) {  
+        if (map.getZoom() == 17) {  
             //Swap layers if moving below 17 zoom
             if(zoomCheck == true) {
                 if (map.hasLayer(markersAllZoom)) {
@@ -424,7 +424,7 @@ function getData(map){
             }
         }
         // swap cluster layers if above 16 zoom
-        else if (map.getZoom() > 16){
+        else if (map.getZoom() > 17){
             if(zoomCheck == true) {
                 if (map.hasLayer(markersAll)) {
                     map.removeLayer(markersAll);
