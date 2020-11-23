@@ -86,10 +86,10 @@ function getData(map){
 	//map.on('zoomend')
 	
 	var getRadius = function () {
-		if (historicalDataMap.getZoom() == 18){
+		if (historicalDataMap.getZoom() == 17){
 			return 1
 		}
-		else{ return 80}
+		else { return 80}
 	};
 
 //part that gets the data
