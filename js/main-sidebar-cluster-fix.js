@@ -388,7 +388,7 @@ function getData(map){
     	
     // Listener for Zoom to act differently near max Zoom
 	map.on('zoomend', function(e){
-        if (map.getZoom() < 16) {  
+        if (map.getZoom() <= 16) {  
             //Swap layers if moving below 16 zoom
             if(zoomCheck == true) {
                 if (map.hasLayer(markersAllZoom)) {
