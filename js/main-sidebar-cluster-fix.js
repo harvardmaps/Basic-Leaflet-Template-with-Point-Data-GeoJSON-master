@@ -421,6 +421,7 @@ function getData(map){
                 };
             map.removeControl(dataControlZoom);
             map.addControl(dataControl);
+            }
         }
         // swap cluster layers if above 16 zoom
         else if (map.getZoom() > 16){
@@ -458,13 +459,11 @@ function getData(map){
             map.addControl(dataControlZoom);
         }
         zoomCheck = true;
-   
         } 
         // reset zoomCheck
         else if (map.getZoom() < 16) {
             zoomCheck = false;
         } 
-    }
 	});
 
 
