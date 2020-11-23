@@ -388,8 +388,8 @@ function getData(map){
     	
     // Listener for Zoom to act differently near max Zoom
 	map.on('zoomend', function(e){
-        if (map.getZoom() == 17) {  
-            //Swap layers if moving below 17 zoom
+        if (map.getZoom() < 16) {  
+            //Swap layers if moving below 16 zoom
             if(zoomCheck == true) {
                 if (map.hasLayer(markersAllZoom)) {
                     map.removeLayer(markersAllZoom);
@@ -422,9 +422,10 @@ function getData(map){
             map.removeControl(dataControlZoom);
             map.addControl(dataControl);
             }
+            zoomCheck = false;
         }
         // swap cluster layers if above 16 zoom
-        else if (map.getZoom() > 17){
+        else if (map.getZoom() > 16){
             if(zoomCheck == true) {
                 if (map.hasLayer(markersAll)) {
                     map.removeLayer(markersAll);
@@ -460,10 +461,10 @@ function getData(map){
         }
         zoomCheck = true;
         } 
-        // reset zoomCheck
+        /* reset zoomCheck
         else if (map.getZoom() < 16) {
             zoomCheck = false;
-        } 
+        } */
 	});
 
 
