@@ -83,14 +83,15 @@ function getData(map){
 	var overlayControl = L.control.layers(overlays, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
 	// Function to return a very small radius for the max zoom
-	//map.on('zoomend')
+	/* map.on('zoomend')
 	
 	var getRadius = function () {
-		if (historicalDataMap.getZoom() == 17){
+		if (map.getZoom() == 17){
 			return 1
 		}
 		else { return 80}
 	};
+*/
 
 //part that gets the data
  $.ajax("data/historical_data.geojson",{
@@ -281,7 +282,11 @@ function getData(map){
 	});
 
 	//Create markercluster groups for all the layers. Add a keypress listener for each cluster
-	var markersAll = L.markerClusterGroup({ maxClusterRadius: getRadius()});
+	var markersAll = L.markerClusterGroup({ maxClusterRadius: function(zoom){
+		if(zoom == 17) {return 1}
+		else{return 80}	
+		} 
+	});
 	markersAll.addLayer(layerAll);
 	markersAll.on('clusterkeypress', function (a) {
 		a.layer.zoomToBounds();
