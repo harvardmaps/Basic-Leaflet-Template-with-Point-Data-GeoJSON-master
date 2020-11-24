@@ -126,6 +126,13 @@ function getData(map){
 			}
 		}
 		
+		// Build display for original address
+		if (feature.feature.properties.ORIG_ADDRESS == null){
+			orig_address = ""
+		} else {
+			orig_address = "At the time, this address was " + feature.feature.properties.ORIG_ADDRESS + "."
+		}
+
 		// Build the display notes and source
 		if (feature.feature.properties.NOTES == null){
 			notes = ""
@@ -161,7 +168,7 @@ function getData(map){
 		action = feature.feature.properties.ACTION
 		type = feature.feature.properties.Type;
 
-		content = display_name + " " + action + " here " + date + r_link_1 + r_link_2 + r_link_3 + "<br>" + notes + "<br>" + source;
+		content = display_name + " " + action + " here " + date + orig_address + r_link_1 + r_link_2 + r_link_3 + "<br>" + notes + "<br>" + source;
 		sidebar.setContent('<h1>Mapping Black Boston</h1>' + 
 		'<h2>Information about this place</h2>' + content);
 	};
