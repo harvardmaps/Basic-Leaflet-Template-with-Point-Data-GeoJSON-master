@@ -135,7 +135,7 @@ function getData(map){
 		if (feature.feature.properties.SOURCE == null){
 			source = ""
 		} else {
-			source = "<br><strong>Source:</strong> " + feature.feature.properties.SOURCE
+			source = "<br><strong>Sources:</strong> " + feature.feature.properties.SOURCE
 		}
 
 		// Build the display record links
@@ -327,7 +327,8 @@ function getData(map){
 
     var dataControl = L.control.layers(dataLayers, null, { position: 'bottomright', collapsed: false }).addTo(map);
 
-    //Create markercluster groups for all the layers with a low cluster radius. Add a keypress listener for each cluster    
+	// Create markercluster groups for all the layers with a low cluster radius for display at high zoom. 
+	// Add a keypress listener for each cluster    
     var markersAllZoom = L.markerClusterGroup( {maxClusterRadius: 2});
     markersAllZoom.addLayer(layerAll);
     markersAllZoom.on('clusterkeypress', function (a) {
@@ -388,7 +389,7 @@ function getData(map){
     	
     // Listener for Zoom to act differently near max Zoom
 	map.on('zoomend', function(e){
-        if (map.getZoom() <= 17 {  
+        if (map.getZoom() <= 17) {  
             //Swap layers if moving below 17 zoom
             if(zoomCheck == true) {
                 if (map.hasLayer(markersAllZoom)) {
