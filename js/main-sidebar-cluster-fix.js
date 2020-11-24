@@ -1,6 +1,9 @@
 // declare map in global scope
 var historicalDataMap;
 
+//variable to hold clicked marker
+var prevMarker = null; 
+
 //instantiate map 
 function createMap(){
 	 historicalDataMap = L.map('map',{
@@ -97,8 +100,14 @@ function getData(map){
 		// e = event
 		var feature = e.target;
 
-		// Change color of icon
-		//feature.setIcon(activeIcon);
+		// if any other active icons exist, change color of icon back
+		if (prevMarker !== null) {
+			prevMarker.setIcon(geojsonIcon);
+		}
+
+		// change color to active icon
+		feature.setIcon(activeIcon);
+		prevMarker = feature;
 
 		// Build the display name
 		if (feature.feature.properties.NAME_2 == null){

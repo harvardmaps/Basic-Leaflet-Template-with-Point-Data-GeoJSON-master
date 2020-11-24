@@ -19,7 +19,7 @@ html, body{
   border-radius: 50%;
   display: inline-block;
 }
-/*
+
 .geojson-Icon-active{
   height: 5px;
   width: 5px;
@@ -27,7 +27,7 @@ html, body{
   border-radius: 50%;
   display: inline-block;
 }
-*/
+
 /* browser adds margin by default, and that adds a scrollbar ... no good */
 body {
   margin: 0;
