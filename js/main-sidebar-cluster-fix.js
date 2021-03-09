@@ -65,7 +65,7 @@ function getData(map){
 	);
 	
 	var McIntyre_1852 = L.tileLayer(
-		'https://bburns.share.library.harvard.edu/tmsprojects/McIntyreClipped/{z}/{x}/{y}.png', {	
+		'https://bburns.share.library.harvard.edu/tmsprojects/mcintyre_tiles/{z}/{x}/{y}.png', {	
 			tms: true,
 			attribution: 'Harvard Map Collection'
 		}
